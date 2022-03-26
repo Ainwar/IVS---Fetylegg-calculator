@@ -46,7 +46,7 @@ int MathFtion::dividing(int a, int b){
     if(b != 0){
         return a / b;
     } else {
-        return "Cannot divide by 0!"
+        return "Cannot divide by 0!";
     }
 }
 
