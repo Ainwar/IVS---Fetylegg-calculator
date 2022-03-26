@@ -24,12 +24,30 @@ int MathFtion::minus(int a, int b){
     return a - b;
 }
 
-int MathFtion::multiplication(int a, int b){
+/**
+ * multiplication of a and b
+ * @param a
+ * @param b
+ * @return multiplication
+*/
 
+int MathFtion::multiplication(int a, int b){
+    return a * b;
 }
 
-int MathFtion::dividing(int a, int b){
+/**
+ * Quotient of a and b
+ * @param a
+ * @param b
+ * @return quotient
+*/
 
+int MathFtion::dividing(int a, int b){
+    if(b != 0){
+        return a / b;
+    } else {
+        return "Cannot divide by 0!"
+    }
 }
 
 /**
@@ -44,11 +62,33 @@ int MathFtion::square(int a, int b = 2){
     return a;
 }
 
-int MathFtion::squareRoot(int a, int b){
-
+/**
+ * nthRoot of a, where level of root is decided by value of b
+ * @param a
+ * @param b 
+ * @return 
+*/
+int MathFtion::nthRoot(int a, int b){
+    float result;
+    
+    //*condition for calculating root
+    if (a < 0){
+        return "Cannot calculate root of negative number!";
+    }
+    //TODO: rest of this function
 }
-int MathFtion::factorial(int a, int b){
 
+/**
+ * Factorial of number a 
+ * @param a number
+ * @return factorial of a
+ */
+int MathFtion::factorial(int a){
+    float result = 1;
+    for (int i = a; i > 0; i--){
+        result =  result * i;
+    }
+    return result;
 }
 
 /**
