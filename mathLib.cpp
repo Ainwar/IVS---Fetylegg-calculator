@@ -75,7 +75,14 @@ int MathFtion::nthRoot(int a, int b){
     if (a < 0){
         return "Cannot calculate root of negative number!";
     }
+
+    if (x == 0 || x == 1){
+        return x;
+    }
+    
     //TODO: rest of this function
+    
+        
 }
 
 /**
