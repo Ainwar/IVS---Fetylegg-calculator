@@ -1,10 +1,13 @@
-#include<iostream>
+#include "mainwindow.h"
 
-using namespace std;
+#include <QApplication>
 
-int main(void){
-  int a = 0;
-  cout << a << endl;
-  cin.get();
-  return 0;
+int main(int argc, char *argv[])
+{
+    //zmena pre git 2
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.setWindowTitle("Calculator is Fetylegg");
+    w.show();
+    return a.exec();
 }
