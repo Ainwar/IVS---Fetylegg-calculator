@@ -1,27 +1,17 @@
+#include<iostream>
 #include "mathLib.h"
 
 #define MinusOne -1
 
 /**
- * sum of a and b
+ * @brief sum of a and b
  * @param a 
  * @param b
  * @return sum
  */
 
-int MathFtion::plus(int a, int b){
+double MathFtion::plus(double a, double b){
     return a + b;
-}
-
-/**
- * difference of a and b
- * @param a
- * @param b
- * @return difference
- */
-
-int MathFtion::minus(int a, int b){
-    return a - b;
 }
 
 /**
@@ -31,52 +21,56 @@ int MathFtion::minus(int a, int b){
  * @return multiplication
 */
 
-int MathFtion::multiplication(int a, int b){
+double MathFtion::multiplication(double a, double b){
     return a * b;
 }
 
 /**
- * Quotient of a and b
+ * @brief Quotient of a and b
  * @param a
  * @param b
  * @return quotient
 */
 
-int MathFtion::dividing(int a, int b){
+double MathFtion::dividing(double a, double b){
     if(b != 0){
         return a / b;
     } else {
-        return "Cannot divide by 0!";
+        fprintf(stderr, "Cannot divide by 0!");
+        return 0; //TODO Solve return value
     }
 }
 
 /**
- * Multipllication of same number numeros times. 
+ * @brief Multipllication of same number numeros times.  
  * @param a number to multiplie
  * @param b how many times is gonna multiple. Square is based if its not defined
+ * @param c to archive [a] for future multiplication
  * @return 
  */
-int MathFtion::square(int a, int b = 2){
+double MathFtion::square(double a, int b = 2){
+    double c = a;
     for(int i = 0; i < b; i++)
-        a *= a;
+        a *= c;
     return a;
 }
 
 /**
- * nthRoot of a, where level of root is decided by value of b
+ * @brief nthRoot of a, where level of root is decided by value of b
  * @param a
  * @param b 
  * @return 
 */
-int MathFtion::nthRoot(int a, int b){
+double MathFtion::nthRoot(double a, int b){
     float result;
     
     //*condition for calculating root
     if (a < 0){
-        return "Cannot calculate root of negative number!";
+        fprintf(stderr, "Cannot calculate root of negative number!");
+        return 0; //TODO Solve return value
     }
 
-    if (x == 0 || x == 1){
+    if (x == 0 || x == 1){ //TODO Repair meaning of [x]? undefined (Alan)
         return x;
     }
     
@@ -86,11 +80,11 @@ int MathFtion::nthRoot(int a, int b){
 }
 
 /**
- * Factorial of number a 
+ * @brief Factorial of number a 
  * @param a number
  * @return factorial of a
  */
-int MathFtion::factorial(int a){
+double MathFtion::factorial(double a){
     float result = 1;
     for (int i = a; i > 0; i--){
         result =  result * i;
@@ -99,10 +93,10 @@ int MathFtion::factorial(int a){
 }
 
 /**
- * Negate number
+ * @brief Negate number
  * @param a number to negate
  * @return negate @a
  */
-int MathFtion::negation(int a){
+double MathFtion::negation(double a){
     return MinusOne*a;
 }
