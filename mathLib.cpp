@@ -75,7 +75,7 @@ double MathFtion::nthRoot(double a, int b){
         return a;
     }
     
-    //TODO: rest of this function
+    // calculation of nth root
     result = pow(a, 1/b)
     return result
         
