@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<math.h>
 #include "mathLib.h"
 #include<algorithm>
 
@@ -230,19 +231,21 @@ double MathFtion::square(double a, int b = 2){
  * @return 
 */
 double MathFtion::nthRoot(double a, int b){
-    float result;
+    double result;
     
     //*condition for calculating root
     if (a < 0){
-        cerr << "Cannot calculate root of negative number!" << endl;
+        fprintf(stderr, "Cannot calculate root of negative number!");
         return 0; //TODO Solve return value
     }
 
-    if (x == 0 || x == 1){ //TODO Repair meaning of [x]? undefined (Alan)
-        return x;
+    if (a == 0 || a == 1){
+        return a;
     }
     
-    
+    // calculation of nth root
+    result = pow(a, 1/b)
+    return result
         
 }
 
