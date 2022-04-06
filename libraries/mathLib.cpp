@@ -117,6 +117,17 @@ bool MathFtion::signsTest(string text){
 }
 
 /**
+ * @brief 
+ * @param test 
+ * @return true 
+ * @return false 
+ */
+
+bool MathFtion::nthRootTest(string test){
+
+}
+
+/**
  * @brief remove white all whitespaces from string
  * @param text which user of function want to clear from whitespaces
  * @return string text cleaned from whitespaces
@@ -229,6 +240,7 @@ double MathFtion::square(double a, int b = 2){
  * @param a
  * @param b 
  * @return 
+ * TODO look for c++ nthRoot function 
 */
 double MathFtion::nthRoot(double a, int b){
     double result;

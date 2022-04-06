@@ -16,7 +16,9 @@ class MathFtion
         string validTest(string text);
         bool brackeysTest(string text);
         bool signsTest(string text);
+        bool nthRootTest(string text);
         //TODO signs test function
+        //TODO nthRootTest function
 
         //Support functions
         string cleaner(string text);
