@@ -15,6 +15,7 @@ class MathFtion
         //test functions
         string validTest(string text);
         bool brackeysTest(string text);
+        bool brackeysSubTest(string text);
         bool signsTest(string text);
         bool nthRootTest(string text);
         //TODO signs test function
@@ -33,7 +34,7 @@ class MathFtion
         double nthRoot(double a, int b);
         double factorial(double a);
         double negation(double a);
-        //TODO optionl change to pointer parametres
+        //TODO optional change to pointer parametres
 };        
 
 #endif

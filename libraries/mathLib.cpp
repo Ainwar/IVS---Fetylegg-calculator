@@ -82,17 +82,17 @@ bool MathFtion::validTest(string text){
 
 /**
  * @brief test if brackyes are in equation or not, if they are, it test if their count match each other
- * TODO test if brackys match one to another like (()()) and not like )))(((
  * @param text tested text
- * @return true if brackeys don't match
- * @return false if brackeys match or there they aren't there
+ * @return true if brackeys aren't okey
+ * @return false if brackeys match or they aren't there
  */
 
 bool MathFtion::brackeysTest(string text){
     int left = findChar(text, LEFTBRACKEY, OPTIONTWO);
     int right = findChar(text, RIGHTBRACKEY, OPTIONTWO);
     if((left != NEGATIVEONE) || (right != NEGATIVEONE)){
-        if(left == right){
+        if((left == right) && brackeysSubTest(text)){
+            
             return false;
         }
         else{
@@ -103,6 +103,29 @@ bool MathFtion::brackeysTest(string text){
         return false;
     }
 }
+
+/**
+ * @brief test if brackeys match agains each other 
+ * @param text testet equation
+ * @return true 
+ * @return false 
+ */
+
+bool MathFtion::brackeysSubTest(string text){
+    int right = backFindChar(text, RIGHTBRACKEY, text.lenght());
+    if(right == MINUSONE){
+        return true;
+    }
+    int left = backFindChar(text, LEFTBRACKEY, right);
+    if(left == MINUSONE){
+        return false;
+    }
+    text[left] = SPACE;
+    text[right] = SPACE;
+    text = cleaner(text);
+    return brackeysSubTest(text);
+}
+
 /**
  * @brief
  * TODO
@@ -117,7 +140,7 @@ bool MathFtion::signsTest(string text){
 }
 
 /**
- * @brief 
+ * @brief test if every 
  * @param test 
  * @return true 
  * @return false 
@@ -175,7 +198,7 @@ int MathFtion::findChar(string text, char lookFor, int option){
  */
 
 int MathFtion::backFindChar(string text, char lookFor, int lastPos){
-    for(int i = lastPos; i > 0; i--){
+    for(int i = lastPos; i >= 0; i--){
         if(test[i] == lookFor){
             return i;
         }
