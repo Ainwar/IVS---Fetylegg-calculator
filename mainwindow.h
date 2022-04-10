@@ -29,7 +29,17 @@ private slots:
 
     void on_pushButton_1_released();
 
+    void on_pushButton_2_clicked();
+
+    void on_pushButton_2_pressed();
+
+    void on_pushButton_2_released();
+
     void on_pushButton_help_clicked();
+
+    void on_pushButton_eq_clicked();
+
+    void on_pushButton_c_clicked();
 
 private:
     Ui::MainWindow *ui;

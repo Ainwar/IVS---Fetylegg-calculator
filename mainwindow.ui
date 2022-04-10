@@ -23,6 +23,11 @@
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -30,6 +35,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>5</string>
     </property>
+    <property name="shortcut">
+     <string>5</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_mul">
     <property name="geometry">
@@ -40,12 +51,20 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>X</string>
+    </property>
+    <property name="shortcut">
+     <string>*</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_8">
@@ -57,6 +76,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -64,6 +88,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>8</string>
     </property>
+    <property name="shortcut">
+     <string>8</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_9">
     <property name="geometry">
@@ -74,6 +104,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -81,6 +116,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>9</string>
     </property>
+    <property name="shortcut">
+     <string>9</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_sqn">
     <property name="geometry">
@@ -92,14 +133,21 @@ color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(107, 75, 71);
+     <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string> xⁿ</string>
     </property>
+    <property name="shortcut">
+     <string/>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_0">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>64</x>
@@ -110,11 +158,18 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+font: 12pt &quot;Segoe UI&quot;;</string>
     </property>
     <property name="text">
      <string>0</string>
     </property>
+    <property name="shortcut">
+     <string>0</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
@@ -125,6 +180,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -132,6 +192,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>4</string>
     </property>
+    <property name="shortcut">
+     <string>4</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_ans">
     <property name="geometry">
@@ -142,12 +208,20 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(134, 114, 111);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>ANS</string>
+    </property>
+    <property name="shortcut">
+     <string>A</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_7">
@@ -159,6 +233,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -166,6 +245,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>7</string>
     </property>
+    <property name="shortcut">
+     <string>7</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_c">
     <property name="geometry">
@@ -176,11 +261,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(134, 114, 111);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>C</string>
+    </property>
+    <property name="shortcut">
      <string>C</string>
     </property>
    </widget>
@@ -193,12 +286,20 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(134, 114, 111);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>⌫</string>
+    </property>
+    <property name="shortcut">
+     <string>Backspace</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -210,6 +311,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -217,6 +323,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>2</string>
     </property>
+    <property name="shortcut">
+     <string>2</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_1">
     <property name="geometry">
@@ -227,6 +339,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -234,6 +351,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>1</string>
     </property>
+    <property name="shortcut">
+     <string>1</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_fac">
     <property name="geometry">
@@ -244,12 +367,20 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>n!</string>
+    </property>
+    <property name="shortcut">
+     <string>!</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_parr">
@@ -261,11 +392,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>)</string>
+    </property>
+    <property name="shortcut">
      <string>)</string>
     </property>
    </widget>
@@ -278,6 +417,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -285,6 +429,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>6</string>
     </property>
+    <property name="shortcut">
+     <string>6</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
@@ -295,6 +445,11 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 color: rgb(255, 255, 255);</string>
@@ -302,6 +457,12 @@ color: rgb(255, 255, 255);</string>
     <property name="text">
      <string>3</string>
     </property>
+    <property name="shortcut">
+     <string>3</string>
+    </property>
+    <attribute name="buttonGroup">
+     <string notr="true">buttonGroup_numbers</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_plus">
     <property name="geometry">
@@ -312,11 +473,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>+</string>
+    </property>
+    <property name="shortcut">
      <string>+</string>
     </property>
    </widget>
@@ -331,10 +500,14 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+font: 12pt &quot;Segoe UI&quot;;</string>
     </property>
     <property name="text">
      <string>√x</string>
+    </property>
+    <property name="shortcut">
+     <string>R</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_parl">
@@ -346,11 +519,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>(</string>
+    </property>
+    <property name="shortcut">
      <string>(</string>
     </property>
    </widget>
@@ -363,11 +544,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>-</string>
+    </property>
+    <property name="shortcut">
      <string>-</string>
     </property>
    </widget>
@@ -377,19 +566,20 @@ color: rgb(255, 255, 255);</string>
       <x>0</x>
       <y>0</y>
       <width>320</width>
-      <height>192</height>
+      <height>80</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
+font: 14pt &quot;Comic Sans MS&quot;;
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;right&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Segoe UI'; font-size:9pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_sq">
@@ -403,10 +593,14 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
+font: 12pt &quot;Segoe UI&quot;;
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string> x²</string>
+    </property>
+    <property name="shortcut">
+     <string>S</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_eq">
@@ -418,11 +612,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(156, 94, 87);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>=</string>
+    </property>
+    <property name="shortcut">
      <string>=</string>
     </property>
    </widget>
@@ -435,11 +637,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(134, 114, 111);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>.</string>
+    </property>
+    <property name="shortcut">
      <string>.</string>
     </property>
    </widget>
@@ -452,11 +662,19 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
+     <string>/</string>
+    </property>
+    <property name="shortcut">
      <string>/</string>
     </property>
    </widget>
@@ -469,12 +687,20 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(134, 114, 111);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>NEG</string>
+    </property>
+    <property name="shortcut">
+     <string>N</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_help">
@@ -494,25 +720,33 @@ background-color: rgb(60, 60, 60);</string>
      <string>?</string>
     </property>
    </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>320</width>
+      <height>112</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(52, 52, 52);
+font: 700 italic 14pt &quot;Comic Sans MS&quot;;
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Comic Sans MS'; font-size:14pt; font-weight:700; font-style:italic;&quot;&gt;
+&lt;p align=&quot;right&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton_del</sender>
-   <signal>clicked()</signal>
-   <receiver>textBrowser</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>300</x>
-     <y>287</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>251</x>
-     <y>97</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="buttonGroup_numbers"/>
+ </buttongroups>
 </ui>
