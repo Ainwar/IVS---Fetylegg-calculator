@@ -39,7 +39,7 @@ color: rgb(255, 255, 255);</string>
      <string>5</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_mul">
@@ -66,6 +66,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>*</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_8">
     <property name="geometry">
@@ -92,7 +95,7 @@ color: rgb(255, 255, 255);</string>
      <string>8</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_9">
@@ -120,7 +123,7 @@ color: rgb(255, 255, 255);</string>
      <string>9</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_sqn">
@@ -143,6 +146,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string/>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">x_operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_0">
     <property name="enabled">
@@ -168,7 +174,7 @@ font: 12pt &quot;Segoe UI&quot;;</string>
      <string>0</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
@@ -196,7 +202,7 @@ color: rgb(255, 255, 255);</string>
      <string>4</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_ans">
@@ -223,6 +229,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>A</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">light_grey_buttons</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
@@ -249,7 +258,7 @@ color: rgb(255, 255, 255);</string>
      <string>7</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_c">
@@ -276,6 +285,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>C</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">light_grey_buttons</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_del">
     <property name="geometry">
@@ -301,6 +313,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>Backspace</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">light_grey_buttons</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
@@ -327,7 +342,7 @@ color: rgb(255, 255, 255);</string>
      <string>2</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_1">
@@ -355,7 +370,7 @@ color: rgb(255, 255, 255);</string>
      <string>1</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_fac">
@@ -377,11 +392,14 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>n!</string>
+     <string>x!</string>
     </property>
     <property name="shortcut">
      <string>!</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">x_operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_parr">
     <property name="geometry">
@@ -407,6 +425,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>)</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_6">
     <property name="geometry">
@@ -433,7 +454,7 @@ color: rgb(255, 255, 255);</string>
      <string>6</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -461,7 +482,7 @@ color: rgb(255, 255, 255);</string>
      <string>3</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">buttonGroup_numbers</string>
+     <string notr="true">numbers</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_plus">
@@ -488,6 +509,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>+</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_r">
     <property name="geometry">
@@ -509,6 +533,9 @@ font: 12pt &quot;Segoe UI&quot;;</string>
     <property name="shortcut">
      <string>R</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">x_operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_parl">
     <property name="geometry">
@@ -534,6 +561,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>(</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_minus">
     <property name="geometry">
@@ -559,6 +589,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>-</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operations</string>
+    </attribute>
    </widget>
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
@@ -602,6 +635,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>S</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">x_operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_eq">
     <property name="geometry">
@@ -625,7 +661,7 @@ color: rgb(255, 255, 255);</string>
      <string>=</string>
     </property>
     <property name="shortcut">
-     <string>=</string>
+     <string>Enter</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_dec">
@@ -652,6 +688,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>.</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">light_grey_buttons</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_div">
     <property name="geometry">
@@ -677,6 +716,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>/</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">operations</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_neg">
     <property name="geometry">
@@ -702,6 +744,9 @@ color: rgb(255, 255, 255);</string>
     <property name="shortcut">
      <string>N</string>
     </property>
+    <attribute name="buttonGroup">
+     <string notr="true">light_grey_buttons</string>
+    </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_help">
     <property name="geometry">
@@ -747,6 +792,9 @@ p, li { white-space: pre-wrap; }
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup_numbers"/>
+  <buttongroup name="numbers"/>
+  <buttongroup name="operations"/>
+  <buttongroup name="light_grey_buttons"/>
+  <buttongroup name="x_operations"/>
  </buttongroups>
 </ui>
