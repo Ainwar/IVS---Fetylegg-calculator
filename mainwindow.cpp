@@ -86,6 +86,7 @@ void MainWindow::on_pushButton_eq_clicked()
     ui->textBrowser->setAlignment(Qt::AlignRight);
     ui->textEdit->clear();
     ui->textEdit->setAlignment(Qt::AlignRight);
+    //qstring to string
     //send expr to expression_decode function, return result and print it in textedit
     ui->textEdit->insertPlainText(ui->pushButton_0->text());
 }
@@ -117,5 +118,11 @@ void MainWindow::numbers_released(QAbstractButton *button)
 void MainWindow::on_pushButton_del_clicked()
 {
     ui->textEdit->clear();
+}
+
+
+void MainWindow::on_pushButton_r_clicked()
+{
+    ui->textEdit->insertPlainText("√");
 }
 

@@ -32,6 +32,8 @@ private slots:
 
     void on_pushButton_del_clicked();
 
+    void on_pushButton_r_clicked();
+
 private:
     Ui::MainWindow *ui;
     HelpDialog *help;
