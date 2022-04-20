@@ -5,12 +5,18 @@
 #include<algorithm>
 
 #define MINUSONE -1 //Negation number/empty return value
-#define FAIL "You inserted wrong equation: "
+#define FAIL "You inserted wrong equation: " //
 #define SPACE 32 //ASCII value of space
 #define LEFTBRACKEY 40 //ASCII value of (
 #define RIGHTBRACKEY 41 //ASCII value of )
+#define OPTIONZERO 0 //for functions which needs option choice
 #define OPTIONONE 1 //for functions which needs option choice
 #define OPTIONTWO 2 //for functions which needs option choice
+#define NUMBERS "0123456789." //Numbers for parsing
+#define SIGNS "!√^*/-+" //Signs for searching cycle
+#define ONESTEP 1 //adding value to cycles or functions 
+#define TESTMODE "test mode" //Password for testing mode
+#define CHARFAIL 63 //Value for return from function that inform about missing signs 
 
 /**
  * @brief 
@@ -20,12 +26,12 @@
  */
 
 string MathFtion::inputFtion(string text){
-    string output;
+    text = cleaner(text);
     if(validTest(text)){
         return text;
     }
-    output = sorter(&text);
-    return output;
+    text = sorter(text);
+    return text;
 }
 
 /**
@@ -36,28 +42,82 @@ string MathFtion::inputFtion(string text){
  */
 
 string MathFtion::sorter(string text){
-    int firBrack = text.
-    int lastBrak 
-    if(){
-        sorter(substr());
+    int firBrack,secBrack; 
+    text = cleaner(text)
+    while(brackeysTest(test)){
+            text.replace(firBrack, lastBrack,(sorter(text.substr(firBrack, (firBrack - secBrack))));
     }
-    else{
-        text = cleaner(text);
-        text = solver(text); 
-    }
-    return text;
+    return solver(text);
 }
 
 /**
  * @brief 
- * TODO
  * @param text 
  * @return string 
  */
 
 string MathFtion::solver(string text){
     
+    string tempCount;
+    char solvingSigns = '+';
+    double numberOne, numberTwo
+    int signPosition, numberOnePosition, numberTwoPosition;
+
+    while(solvingSign = sign(text) != CHARFAIL){
+
+        signPosition = findChar(text, solvingSign);
+        numberOnePosition = numberFinder(text, signPosition, OPTIONONE);
+        numberOne =  stod(text.substr(numberOnePosition, signPosition));
+
+        if(solvingSign != '!'){
+            numberTwoPosition = numberFinder(text, signPosition);
+            numberTwo = stod(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition)));
+            tempCount = to_string(mathCaller(numberOne, numberTwo, solvingSign));
+            text.replace(numberOnePosition, (numberTwoPosition - numberOnePosition + ONESTEP), tempCount);
+        }
+        else{
+            tempCount = to_string(mathCaller(numberOne,OPTIONZERO ,solvingSign));
+            text.replace(numberOnePosition, (tempCount.length()+ONESTEP), tempCount);
+        }
+    }
     return text;
+}
+
+/**
+ * @brief choose function which is gonna be called
+ * @param numberOne first number 
+ * @param numberTwo second number
+ * @param solvingSign sign for solving
+ * @return double functions
+ */
+
+double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSign){
+    switch(solvingSign){
+        case '!':
+            return factorial(numberOne);
+            break;
+        case '√': 
+            return nthRoot(numberOne, (int)numberTwo)
+            break;
+        case '^':
+            return power(numberOne, (int)numberTwo);
+            break;
+        case '*':
+            return multiplication(numberOne, numberTwo);
+            break;
+        case '/':
+            return dividing(numberOne, numberTwo);
+            break;
+        case '-':
+            return plusF(numberOne, negation(numberTwo));
+            break;
+        case '+':
+            return plusF(numberOne, numberTwo);
+            break;
+        default:
+            return 63;
+            break;
+    }
 }
 
 /**
@@ -207,13 +267,74 @@ int MathFtion::backFindChar(string text, char lookFor, int lastPos){
 }
 
 /**
+ * @brief function for finding of begin or end of a number
+ * @param text equation
+ * @param signPostion position of sign
+ * @param option looking from the front as [0] or [1] as looking from the back
+ * @return value where number ends
+ */
+
+int MathFtion::numberFinder(string text, int signPosition, int option){
+    bool changePos = false;
+    string numbersConst = NUMBERS;
+
+    if(option){
+        for(int i = (signPosition-ONESTEP); i >= 0; i--){
+            for(int k = 0; k < numbersConst.length(); k++){
+                if(text[i] == numbersConst[k]){
+                    changePos = true;
+                }    
+            }
+            if(!changePos){
+                return (i+ONESTEP);
+            }
+            changePos = false;
+        }
+        return 0;
+    }
+    else{
+        for(int i = (signPosition+ONESTEP); i <= text.length(); i++){
+            for(int k = 0; k < numbersConst.length(); k++){
+                if(text[i] == numbersConst[k]){
+                    changePos = true;
+                }
+            }
+            if(!changePos){
+                return (i-ONESTEP);
+            }
+            changePos = false;
+        }
+        return text.length();
+    }
+}
+
+/**
+ * @brief function for finding signs
+ * @param text equatation
+ * @return char sign
+ */
+
+char MathFtion::sign(string text){
+    string signsConst = SIGNS;
+
+    for(int i = 0; i < signsConst.length(); i++){
+        for(int k = 0; k < text.length(); k++){
+            if(text[k] == signsConst[i]){
+                return text[k];
+            }
+        }
+    }
+    return CHARFAIL
+}
+
+/**
  * @brief sum of a and b
  * @param a
  * @param b
  * @return sum
  */
 
-double MathFtion::plus(double a, double b){
+double MathFtion::plusF(double a, double b){
     return a + b;
 }
 
@@ -251,7 +372,7 @@ double MathFtion::dividing(double a, double b){
  * @param c to archive [a] for future multiplication
  * @return 
  */
-double MathFtion::square(double a, int b = 2){
+double MathFtion::power(double a, int b){
     double c = a;
     for(int i = 0; i < b; i++)
         a *= c;
