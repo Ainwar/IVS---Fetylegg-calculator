@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(52, 52, 52);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
@@ -135,19 +138,23 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">font: 12pt &quot;Segoe UI&quot;;
-background-color: rgb(107, 75, 71);
+     <string notr="true">background-color: rgb(107, 75, 71);
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string> xⁿ</string>
     </property>
     <property name="shortcut">
-     <string/>
+     <string>Shift+S</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">x_operations</string>
+     <string notr="true">operations_x</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_0">
@@ -162,10 +169,14 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
-color: rgb(255, 255, 255);
-font: 12pt &quot;Segoe UI&quot;;</string>
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>0</string>
@@ -395,10 +406,10 @@ color: rgb(255, 255, 255);</string>
      <string>x!</string>
     </property>
     <property name="shortcut">
-     <string>!</string>
+     <string>F</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">x_operations</string>
+     <string notr="true">operations_x</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_parr">
@@ -522,10 +533,14 @@ color: rgb(255, 255, 255);</string>
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
-color: rgb(255, 255, 255);
-font: 12pt &quot;Segoe UI&quot;;</string>
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>√x</string>
@@ -534,7 +549,7 @@ font: 12pt &quot;Segoe UI&quot;;</string>
      <string>R</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">x_operations</string>
+     <string notr="true">operations_x</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_parl">
@@ -596,16 +611,17 @@ color: rgb(255, 255, 255);</string>
    <widget class="QTextBrowser" name="textBrowser">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>32</x>
       <y>0</y>
-      <width>320</width>
+      <width>288</width>
       <height>80</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 font: 14pt &quot;Comic Sans MS&quot;;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+border:none;</string>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -624,9 +640,14 @@ p, li { white-space: pre-wrap; }
       <height>64</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(107, 75, 71);
-font: 12pt &quot;Segoe UI&quot;;
+
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
@@ -636,7 +657,7 @@ color: rgb(255, 255, 255);</string>
      <string>S</string>
     </property>
     <attribute name="buttonGroup">
-     <string notr="true">x_operations</string>
+     <string notr="true">operations_x</string>
     </attribute>
    </widget>
    <widget class="QPushButton" name="pushButton_eq">
@@ -665,6 +686,9 @@ color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_dec">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -758,8 +782,9 @@ color: rgb(255, 255, 255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(60, 60, 60);</string>
+     <string notr="true">background-color: rgb(60, 60, 60);
+color: rgb(255, 255, 255);
+</string>
     </property>
     <property name="text">
      <string>?</string>
@@ -769,15 +794,16 @@ background-color: rgb(60, 60, 60);</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>80</y>
+      <y>90</y>
       <width>320</width>
-      <height>112</height>
+      <height>102</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(52, 52, 52);
 font: 700 italic 14pt &quot;Comic Sans MS&quot;;
-color: rgb(255, 255, 255);</string>
+color: rgb(255, 255, 255);
+border:none;</string>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -787,14 +813,60 @@ p, li { white-space: pre-wrap; }
 &lt;p align=&quot;right&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>80</y>
+      <width>320</width>
+      <height>10</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <zorder>pushButton_5</zorder>
+   <zorder>pushButton_mul</zorder>
+   <zorder>pushButton_8</zorder>
+   <zorder>pushButton_9</zorder>
+   <zorder>pushButton_sqn</zorder>
+   <zorder>pushButton_0</zorder>
+   <zorder>pushButton_4</zorder>
+   <zorder>pushButton_ans</zorder>
+   <zorder>pushButton_7</zorder>
+   <zorder>pushButton_c</zorder>
+   <zorder>pushButton_del</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>pushButton_1</zorder>
+   <zorder>pushButton_fac</zorder>
+   <zorder>pushButton_parr</zorder>
+   <zorder>pushButton_6</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_plus</zorder>
+   <zorder>pushButton_r</zorder>
+   <zorder>pushButton_parl</zorder>
+   <zorder>pushButton_minus</zorder>
+   <zorder>textBrowser</zorder>
+   <zorder>pushButton_sq</zorder>
+   <zorder>pushButton_eq</zorder>
+   <zorder>pushButton_dec</zorder>
+   <zorder>pushButton_div</zorder>
+   <zorder>pushButton_neg</zorder>
+   <zorder>textEdit</zorder>
+   <zorder>pushButton_help</zorder>
+   <zorder>line</zorder>
   </widget>
  </widget>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="numbers"/>
+  <buttongroup name="operations_x"/>
   <buttongroup name="operations"/>
+  <buttongroup name="numbers"/>
   <buttongroup name="light_grey_buttons"/>
-  <buttongroup name="x_operations"/>
  </buttongroups>
 </ui>
