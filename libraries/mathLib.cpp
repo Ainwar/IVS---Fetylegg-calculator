@@ -45,6 +45,8 @@ string MathFtion::sorter(string text){
     int firBrack,secBrack; 
     text = cleaner(text)
     while(brackeysTest(test)){
+            firBrack = backFindChar(text, RIGHTBRACKEY, text.lenght())
+            secBrack = backFindChar(text, LEFTBRACKEY, firBrack);
             text.replace(firBrack, lastBrack,(sorter(text.substr(firBrack, (firBrack - secBrack))));
     }
     return solver(text);
