@@ -1,3 +1,0 @@
-/home/matus/projekt/CMakeFiles/rebuild_cache.dir
-/home/matus/projekt/CMakeFiles/edit_cache.dir
-/home/matus/projekt/CMakeFiles/runTests.dir
