@@ -189,16 +189,25 @@ bool MathFtion::brackeysSubTest(string text){
 }
 
 /**
- * @brief
- * TODO
+ * @brief tests if arithmetic operators are not repeating one after another
  * @param text 
  * @return true 
  * @return false 
  */
 bool MathFtion::signsTest(string text){
 
-    return true;
-    return false;
+    for(int i = 0; i < text.length(); i++){
+
+        if (text[i] == ('+') || text[i] == ('-') || text[i] == ('*') || text[i] == ('/') ){
+            std::cout << "found it!" << std::endl;
+
+            if (text[i+1] == ('+') || text[i+1] == ('-') || text[i+1] == ('*') || text[i+1] == ('/') ) {
+                //? std::cout << "Operator error! on place " << i+1 << " char: " << text[i+1] << std::endl; ERROR MESSAGE
+                return true; //* means fail
+            }
+        }
+    }
+    return false; //* means its ok
 }
 
 /**
