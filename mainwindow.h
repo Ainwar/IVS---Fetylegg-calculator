@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 #include <QAbstractButton>
 #include <QMainWindow>
-#include "helpdialog.h"
+#include <QShortcut>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -63,9 +63,10 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    HelpDialog *help;
+    bool help = false;
     std::string ans;
     int flag = 0;
+    QShortcut *shortcut;
 };
 
 #endif // MAINWINDOW_H

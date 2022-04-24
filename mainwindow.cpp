@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "helpdialog.h"
 #include <QShortcut>
 #include <QButtonGroup>
 #include <QEventLoop>
@@ -28,11 +27,23 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->operations, &QButtonGroup::buttonReleased, this, &MainWindow::operations_released);
     connect(ui->operations_x, &QButtonGroup::buttonPressed, this, &MainWindow::operations_x_pressed);
     connect(ui->operations_x, &QButtonGroup::buttonReleased, this, &MainWindow::operations_x_released);
+    shortcut = new QShortcut(QKeySequence("Return"), ui->pushButton_eq);
+    connect(shortcut, &QShortcut::activated, this, &MainWindow::on_pushButton_eq_clicked);
+    ui->label->setVisible(false);
+    ui->label_2->setVisible(false);
+    ui->label_3->setVisible(false);
+    ui->label_4->setVisible(false);
+    ui->label_5->setVisible(false);
+    ui->label_6->setVisible(false);
+    ui->label_7->setVisible(false);
+    ui->label_8->setVisible(false);
+    ui->label_9->setVisible(false);
+    ui->label_10->setVisible(false);
 
-    connect(ui->pushButton_fac, &QPushButton::clicked, this, &MainWindow::on_pushButton_fac_clicked);
+    /*connect(ui->pushButton_fac, &QPushButton::clicked, this, &MainWindow::on_pushButton_fac_clicked);
     connect(ui->pushButton_sqn, &QPushButton::clicked, this, &MainWindow::on_pushButton_sqn_clicked);
     connect(ui->pushButton_sq, &QPushButton::clicked, this, &MainWindow::on_pushButton_sq_clicked);
-    connect(ui->pushButton_dec, &QPushButton::clicked, this, &MainWindow::on_pushButton_dec_clicked);
+    connect(ui->pushButton_dec, &QPushButton::clicked, this, &MainWindow::on_pushButton_dec_clicked);*/
 }
 MainWindow::~MainWindow()
 {
@@ -41,8 +52,40 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_help_clicked()
 {
-    help = new HelpDialog(this);
-    help->show();
+    if(help == true)
+        help = false;
+    else
+        help = true;
+    if(help == true)
+    {
+        ui->pushButton_help->setStyleSheet("QPushButton{ background-color: rgb(156, 94, 87) } QPushButton{ color: white }");
+        //show labels
+        ui->label->setVisible(true);
+        ui->label_2->setVisible(true);
+        ui->label_3->setVisible(true);
+        ui->label_4->setVisible(true);
+        ui->label_5->setVisible(true);
+        ui->label_6->setVisible(true);
+        ui->label_7->setVisible(true);
+        ui->label_8->setVisible(true);
+        ui->label_9->setVisible(true);
+        ui->label_10->setVisible(true);
+    }
+    else
+    {
+        ui->pushButton_help->setStyleSheet("QPushButton{ background-color: rgb(60,60,60) } QPushButton{ color: white }");
+        //cover labels
+        ui->label->setVisible(false);
+        ui->label_2->setVisible(false);
+        ui->label_3->setVisible(false);
+        ui->label_4->setVisible(false);
+        ui->label_5->setVisible(false);
+        ui->label_6->setVisible(false);
+        ui->label_7->setVisible(false);
+        ui->label_8->setVisible(false);
+        ui->label_9->setVisible(false);
+        ui->label_10->setVisible(false);
+    }
 }
 
 //equation button
@@ -69,9 +112,11 @@ void MainWindow::on_pushButton_eq_clicked()
     connect(ui->operations, &QButtonGroup::buttonClicked, &loop, &QEventLoop::quit);
     connect(ui->operations_x, &QButtonGroup::buttonClicked, &loop, &QEventLoop::quit);
     disconnect(ui->pushButton_eq, &QPushButton::clicked, this, 0);
+    disconnect(shortcut, &QShortcut::activated, this, &MainWindow::on_pushButton_eq_clicked);
     loop.exec();
     QString tmp2 = ui->textEdit->toPlainText();
     connect(ui->pushButton_eq, &QPushButton::clicked, this, &MainWindow::on_pushButton_eq_clicked);
+    connect(shortcut, &QShortcut::activated, this, &MainWindow::on_pushButton_eq_clicked);
     if(flag == 0)
     {
         tmp2.remove(0, expr.length());
