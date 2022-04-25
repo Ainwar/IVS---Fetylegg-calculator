@@ -4,10 +4,11 @@ LDLIBS = -lm
 EXECUTABLE = mathLib.o
 OBJECT = mathLib.cpp
 DIRECTORY = ../ivs_makefile # toto sa zmeni potom ked sa to bude odovzdavat
-ZIP = xlogin01_xlogin02_xlogin03_xlogin04.zip
+ZIP = xbartl07_xsulga02_xtabim01_xpazde16.zip
 FOLDERS = CMakeFiles html latex
-SINGLE_FILE = cmake_install.cmake CMakeCache.txt Makefile runTests doc.doxygen
+SINGLE_FILE = cmake_install.cmake CMakeCache.txt Makefile runTests Doxyfile.doxygen
 
+# prelozenie GUI
 # prelozenie profilingu
 # run - spustenie programu
 # profile - spustenie profilingu
@@ -24,7 +25,7 @@ test: tests.cpp
 	cmake CMakeLists.txt && make -f Makefile && ./runTests
 
 doc: 
-	doxygen -g doc.doxygen && doxygen doc.doxygen
+	doxygen Doxyfile.doxygen
 
 clean:
 	rm -f $(EXECUTABLE)
