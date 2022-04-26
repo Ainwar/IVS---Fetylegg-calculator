@@ -18,8 +18,10 @@
 #define TESTMODE "test mode" //Password for testing mode
 #define CHARFAIL 63 //Value for return from function that inform about missing signs 
 
+using namespace std;
+
 /**
- * @brief send equation to other functions
+ * @brief public function to control private functios
  * @param text equation
  * @return string answer
  */
@@ -34,51 +36,119 @@ string MathFtion::inputFtion(string text){
 }
 
 /**
- * @brief sort brackeys, eliminate them by sending content of brackeys into solver
+ * @brief sort out equation in brackeys, solve them, return them into equation
  * @param text equation
- * @return string without brackyes with solver function
+ * @return string asnwer
  */
 
 string MathFtion::sorter(string text){
-    int firBrack,secBrack; 
-    text = cleaner(text)
-    while(!brackeysTest(test)){
-            firBrack = backFindChar(text, RIGHTBRACKEY, text.lenght())
-            secBrack = backFindChar(text, LEFTBRACKEY, firBrack);
-            text.replace(secBrack, firBrack,(solver(text.substr(secBrack+ONESTEP, (firBrack - secBrack - ONESTEP)))));
-    }
+    int firBrack, secBrack, brackeys;
+    string tempLeft, tempRight, tempCount;
+    brackeys = findChar(text, LEFTBRACKEY, 2);
+    while(brackeys){
+        firBrack = backFindChar(text, LEFTBRACKEY, text.length());
+        secBrack = findChar(text, RIGHTBRACKEY,1,firBrack);
+        if(firBrack != 0){
+            tempLeft = text.substr(0,firBrack);
+        }
+        else{
+            tempLeft = ' ';
+        }
+        if(secBrack != text.length()){
+            tempRight = text.substr((secBrack+ONESTEP),(text.length() - secBrack));
+        }
+        else{
+            tempRight = ' ';
+        }
+        tempCount = solverBaby(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)));
+        text = cleaner(tempLeft+tempCount+tempRight);
+        brackeys--;
+    }   
     return solver(text);
 }
 
 /**
- * @brief parse numbers, look for signs, solve problem
+ * @brief solving equation
  * @param text equation
- * @return string answer
+ * @return string asnwer
+ * @return string FAIL if after reduction of signs 
  */
 
 string MathFtion::solver(string text){
     
-    string tempCount;
-    char solvingSigns = '+';
-    double numberOne, numberTwo
+    string tempCount, tempLeft, tempRight;
+    int negFir = 0, negSec = 0;
+    char solvingSign = '+';
+    double numberOne, numberTwo;
     int signPosition, numberOnePosition, numberTwoPosition;
-
-    while(solvingSign = sign(text) != CHARFAIL){
-
-        signPosition = findChar(text, solvingSign);
+    text = signRepair(text);
+    if(signsTest(text)){
+        return FAIL;
+    }
+    while((solvingSign = sign(text, &signPosition)) != CHARFAIL){
         numberOnePosition = numberFinder(text, signPosition, OPTIONONE);
-        numberOne =  stod(text.substr(numberOnePosition, signPosition));
+        if(numberOnePosition != 0 && text[numberOnePosition-ONESTEP] == '-' && solvingSign != '!'){
+            text.erase(numberOnePosition-ONESTEP,ONESTEP);
+            numberOnePosition--;
+            signPosition--;
+            negFir = 1;
+        }
+        if(numberOnePosition == ONESTEP && text[0] == '+'){
+            text.erase(0, ONESTEP);
+            numberOnePosition--;
+            signPosition--;
+        }
+        if(numberOnePosition != 0){
+                tempLeft = text.substr(0, numberOnePosition);
+
+            }
+        else{
+                tempLeft = ' ';
+        }
+        numberOne = stod(text.substr(numberOnePosition, (signPosition-numberOnePosition)));
+        if(negFir){
+            numberOne = negation(numberOne);
+        }
 
         if(solvingSign != '!'){
+            if(text[signPosition+ONESTEP] == '-'){
+                text.erase(signPosition+ONESTEP, ONESTEP);
+                negSec = 1;
+            }
+            if(text[signPosition+ONESTEP] == '+'){
+                text.erase(signPosition+ONESTEP,ONESTEP);
+            }
             numberTwoPosition = numberFinder(text, signPosition);
             numberTwo = stod(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition)));
+            if(negSec){
+                numberTwo = negation(numberTwo);
+            }
             tempCount = to_string(mathCaller(numberOne, numberTwo, solvingSign));
-            text.replace(numberOnePosition, (numberTwoPosition - numberOnePosition + ONESTEP), tempCount);
+            
+            if(numberTwoPosition != text.length()){
+                tempRight = text.substr(numberTwoPosition+1,(text.length()-numberTwoPosition));
+            }
+            else{
+                tempRight = ' ';
+            }
+            text = tempLeft+tempCount+tempRight;
+            
         }
         else{
-            tempCount = to_string(mathCaller(numberOne,OPTIONZERO ,solvingSign));
-            text.replace(numberOnePosition, (tempCount.length()+ONESTEP), tempCount);
+            if((signPosition+ONESTEP) < text.length()){
+                tempRight = text.substr((signPosition+ONESTEP), text.length());
+            }
+            else{
+                tempRight = ' ';
+            }
+            tempCount = to_string(mathCaller(numberOne,0,solvingSign));
+            text = tempLeft+tempCount+tempRight;
+
         }
+        text = cleaner(text);
+        text = signRepair(text);
+        negFir = 0;
+        negSec = 0;
     }
     return text;
 }
@@ -97,7 +167,7 @@ double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSig
             return factorial(numberOne);
             break;
         case '√': 
-            return nthRoot(numberOne, (int)numberTwo)
+            return nthRoot(numberTwo, (int)numberOne)
             break;
         case '^':
             return power(numberOne, (int)numberTwo);
@@ -121,10 +191,10 @@ double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSig
 }
 
 /**
- * @brief test if logic in equation is allright
- * @param text 
- * @return true if one of the test isn't allright
- * @return false if everything is allright
+ * @brief test logic of equation
+ * @param text equation
+ * @return true unsuccessful test
+ * @return false successful test
  */
 
 bool MathFtion::validTest(string text){
@@ -166,8 +236,8 @@ bool MathFtion::brackeysTest(string text){
 /**
  * @brief test if brackeys match agains each other 
  * @param text testet equation
- * @return true 
- * @return false 
+ * @return true unsuccessful test
+ * @return false successful
  */
 
 bool MathFtion::brackeysSubTest(string text){
@@ -187,35 +257,21 @@ bool MathFtion::brackeysSubTest(string text){
 
 /**
  * @brief tests if arithmetic operators are not repeating one after another
- * @param text 
- * @return true 
- * @return false 
+ * @param text equation
+ * @return true as unsuccessful test
+ * @return false as successful test
  */
 bool MathFtion::signsTest(string text){
 
     for(int i = 0; i < text.length(); i++){
 
-        if (text[i] == ('+') || text[i] == ('-') || text[i] == ('*') || text[i] == ('/') ){
-            std::cout << "found it!" << std::endl;
-
-            if (text[i+1] == ('+') || text[i+1] == ('-') || text[i+1] == ('*') || text[i+1] == ('/') ) {
-                //? std::cout << "Operator error! on place " << i+1 << " char: " << text[i+1] << std::endl; ERROR MESSAGE
-                return true; //* means fail
+        if (text[i] == ('^') || text[i] == ('√') || text[i] == ('*') || text[i] == ('/') ){
+            if (text[i+1] == ('^') || text[i+1] == ('√') || text[i+1] == ('*') || text[i+1] == ('/') ) {
+                return true;
             }
         }
     }
-    return false; //* means its ok
-}
-
-/**
- * @brief test if every 
- * @param test 
- * @return true 
- * @return false 
- */
-
-bool MathFtion::nthRootTest(string test){
-
+    return false;
 }
 
 /**
@@ -234,12 +290,13 @@ string MathFtion::cleaner(string text){
  * @param text equation
  * @param lookFor character user of function looking for
  * @param option 1 = position finder / 2 = counter
+ * @param position can be send startion position, default = 0;
  * @return position of character/sum of exact character/empty value
  */
 
-int MathFtion::findChar(string text, char lookFor, int option){
+int MathFtion::findChar(string text, char lookFor, int option, int position){
     int counter = 0;
-    for(int i = 0; i < text.lenght(); i++){
+    for(int i = position; i < text.lenght(); i++){
         if(text[i] == lookFor){
             if(option = 1){
                 return i;
@@ -319,15 +376,26 @@ int MathFtion::numberFinder(string text, int signPosition, int option){
 /**
  * @brief function for finding signs
  * @param text equatation
+ * @param position pointer on signPosition
  * @return char sign
+ * @return send position of solving sign throught pointer
  */
 
-char MathFtion::sign(string text){
+char MathFtion::sign(string text, int*position){
     string signsConst = SIGNS;
-
+    string numberConst = NUMBERS;
+    int actualPos, numPos = text.length();
+    for(int j = 0; j < numberConst.length(); j++){
+        actualPos = text.find(numberConst[j]);
+        if(actualPos >= 0 && numPos > actualPos ){
+            numPos = actualPos; 
+        }
+    }
+    
     for(int i = 0; i < signsConst.length(); i++){
-        for(int k = 0; k < text.length(); k++){
+        for(int k = numPos; k < text.length(); k++){
             if(text[k] == signsConst[i]){
+                *position = k;
                 return text[k];
             }
         }
@@ -336,63 +404,10 @@ char MathFtion::sign(string text){
 }
 
 /**
- * @brief reduce sign plus and minus in equation
- * @param text equation
- * @return repaired string
- */
-
-string MathFtion::signRepair(string text){
-    char lastChar = text[0];
-    int counter = 0;
-    cout << text << " first one" << endl;
-    for(int i = 0; i < text.length(); i++){
-        cout << text << endl;
-        if(lastChar == text[i]){
-            counter++;
-            if(counter == 2){
-                switch(lastChar){
-                    case '-':
-                        text.erase(i,ONESTEP);
-                        text[i-ONESTEP] = '+';
-                        i -= ONESTEP;
-                        lastChar = text[i];
-                        counter = ONESTEP;
-                        break;
-
-                    case '+':
-                        text.erase(i,ONESTEP);
-                        i -= ONESTEP; 
-                        lastChar = text[i];
-                        counter = ONESTEP;
-                        break;
-
-                    default:
-                        continue;
-                        break;
-                }
-            }
-        }
-        else{
-            if(lastChar == '+' && text[i] == '-'){
-                text.erase(i-ONESTEP, ONESTEP);
-                i--;
-            }
-            if(lastChar == '-' && text[i] == '+'){
-                text.erase(ONESTEP, ONESTEP);
-                i--;
-            }
-            counter = 1;
-            lastChar = text[i];
-        }
-    }
-    return text;
-}
-
-/**
  * @brief sum of a and b
- * @param a
- * @param b
- * @return sum
+ * @param a number one
+ * @param b number two
+ * @return answer
  */
 
 double MathFtion::plusF(double a, double b){
@@ -401,9 +416,9 @@ double MathFtion::plusF(double a, double b){
 
 /**
  * multiplication of a and b
- * @param a
- * @param b
- * @return multiplication
+ * @param a number one
+ * @param b number two
+ * @return answer
 */
 
 double MathFtion::multiplication(double a, double b){
@@ -412,17 +427,16 @@ double MathFtion::multiplication(double a, double b){
 
 /**
  * @brief Quotient of a and b
- * @param a
- * @param b
- * @return quotient
+ * @param a number one
+ * @param b number two
+ * @return answer
 */
-
 double MathFtion::dividing(double a, double b){
     if(b != 0){
         return a / b;
     } else {
         cerr << "Cannot divide by 0!" << endl;
-        return 0; //TODO Solve return value
+        return 0;
     }
 }
 
@@ -431,20 +445,29 @@ double MathFtion::dividing(double a, double b){
  * @param a number to multiplie
  * @param b how many times is gonna multiple. Square is based if its not defined
  * @param c to archive [a] for future multiplication
- * @return 
+ * @return answer
  */
 double MathFtion::power(double a, int b){
-    double c = a;
-    for(int i = 0; i < b; i++)
-        a *= c;
-    return a;
+    if(b == 0){
+        return 1;
+    }
+    else if(b == 1){
+        return a;
+    }
+    else{
+        int c = a;
+        for(int i = 1; i < b; i++)
+            a = a*c;
+    
+        return a;
+    }
 }
 
 /**
  * @brief nthRoot of a, where level of root is decided by value of b
- * @param a
- * @param b 
- * @return 
+ * @param a number under root sign 
+ * @param b number of root
+ * @return answer
 */
 double MathFtion::nthRoot(double a, int b){
     double result;
@@ -452,7 +475,7 @@ double MathFtion::nthRoot(double a, int b){
     //*condition for calculating root
     if (a < 0){
         fprintf(stderr, "Cannot calculate root of negative number!");
-        return 0; //TODO Solve return value
+        return 0;
     }
 
     if (a == 0 || a == 1){
