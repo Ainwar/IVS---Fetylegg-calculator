@@ -71,6 +71,7 @@ string MathFtion::sorter(string text){
  * @brief solving equation
  * @param text equation
  * @return string asnwer
+ * @return string FAIL if after reduction of signs 
  */
 
 string MathFtion::solver(string text){
@@ -81,7 +82,9 @@ string MathFtion::solver(string text){
     double numberOne, numberTwo;
     int signPosition, numberOnePosition, numberTwoPosition;
     text = signRepair(text);
-    
+    if(signsTest(text)){
+        return FAIL;
+    }
     while((solvingSign = sign(text, &signPosition)) != CHARFAIL){
         numberOnePosition = numberFinder(text, signPosition, OPTIONONE);
         if(numberOnePosition != 0 && text[numberOnePosition-ONESTEP] == '-' && solvingSign != '!'){
