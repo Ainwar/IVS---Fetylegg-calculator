@@ -154,6 +154,58 @@ string MathFtion::solver(string text){
 }
 
 /**
+ * @brief get rid off excess plus and minus
+ * @param text equation
+ * @return repaired equation
+ */
+
+string MathFtion::signRepair(string text){
+    char lastChar = text[0];
+    int counter = 0;
+    for(int i = 0; i < text.length(); i++){
+        cout << text << endl;
+        if(lastChar == text[i]){
+            counter++;
+            if(counter == 2){
+                switch(lastChar){
+                    case '-':
+                        text.erase(i,ONESTEP);
+                        text[i-ONESTEP] = '+';
+                        i -= ONESTEP;
+                        lastChar = text[i];
+                        counter = 1;
+                        break;
+
+                    case '+':
+                        text.erase(i,1);
+                        i -= 1; 
+                        lastChar = text[i];
+                        counter = 1;
+                        break;
+
+                    default:
+                        continue;
+                        break;
+                }
+            }
+        }
+        else{
+            if(lastChar == '+' && text[i] == '-'){
+                text.erase(i-ONESTEP, ONESTEP);
+                i--;
+            }
+            if(lastChar == '-' && text[i] == '+'){
+                text.erase(i, ONESTEP);
+                i--;
+            }
+            counter = 1;
+            lastChar = text[i];
+        }
+    }
+    return text;
+}
+
+/**
  * @brief choose function which is gonna be called
  * @param numberOne first number 
  * @param numberTwo second number
