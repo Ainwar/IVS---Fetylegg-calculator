@@ -59,6 +59,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/**
+ * @brief MainWindow::on_pushButton_help_clicked shows/hides labels with keybinding when "?" button is clicked
+ */
 void MainWindow::on_pushButton_help_clicked()
 {
     if(help == true)
@@ -97,7 +100,12 @@ void MainWindow::on_pushButton_help_clicked()
     }
 }
 
-//equation button
+/**
+ * @brief MainWindow::on_pushButton_eq_clicked
+ * takes written equation, prints it in upper textbrowser, calculates equation via mathlib,
+ * stores answer in ans(printed by ans button) and writes it into lower textedit,
+ * then gets into loop where answer is deleted when any button is pressed
+ */
 void MainWindow::on_pushButton_eq_clicked()
 {
     flag = 0;
@@ -137,42 +145,79 @@ void MainWindow::on_pushButton_eq_clicked()
     }
     flag = 0;
 }
+
+/**
+ * @brief MainWindow::on_pushButton_eq_pressed changing color of "=" button when pressed
+ */
 void MainWindow::on_pushButton_eq_pressed()
 {
     ui->pushButton_eq->setStyleSheet("QPushButton{ background-color: rgb(165, 110, 110) } QPushButton{ color: white }");
 }
+
+/**
+ * @brief MainWindow::on_pushButton_eq_released changing back color of "=" button when released
+ */
 void MainWindow::on_pushButton_eq_released()
 {
     ui->pushButton_eq->setStyleSheet("QPushButton{ background-color: rgb(162, 94, 87) } QPushButton{ color: white }");
 }
 
-//numbers clicked, pressed,released
+/**
+ * @brief MainWindow::numbers_clicked inserting text of button when clicked on button from number buttongroup
+ * @param button pointer to button from group numbers
+ */
 void MainWindow::numbers_clicked(QAbstractButton *button)
 {
     ui->textEdit->insertPlainText(button->text());
 }
+
+/**
+ * @brief MainWindow::numbers_pressed changing color of number buttons when pressed
+ * @param button pointer to button from group numbers
+ */
 void MainWindow::numbers_pressed(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(60,60,60) } QPushButton{ color: white }");
 }
+
+/**
+ * @brief MainWindow::numbers_released changing back color of number buttons when released
+ * @param button pointer to button from group numbers
+ */
 void MainWindow::numbers_released(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(52,52,52) } QPushButton{ color: white }");
 }
 
-//light grey buttons
+/**
+ * @brief MainWindow::light_grey_pressed changing color of light grey buttons when pressed
+ * @param button pointer to button from group light_grey_buttons
+ */
 void MainWindow::light_grey_pressed(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(145,130,125) } QPushButton{ color: white }");
 }
+
+/**
+ * @brief MainWindow::light_grey_released changing back color of light grey button when released
+ * @param button pointer to button from group light_grey_buttons
+ */
 void MainWindow::light_grey_released(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(134,114,111) } QPushButton{ color: white }");
 }
+
+/**
+ * @brief MainWindow::on_pushButton_del_clicked deletes previous char in textedit
+ */
 void MainWindow::on_pushButton_del_clicked()
 {
     ui->textEdit->textCursor().deletePreviousChar();
 }
+
+/**
+ * @brief MainWindow::on_pushButton_c_clicked clears all text in textedit and textbrowser
+ */
 void MainWindow::on_pushButton_c_clicked()
 {
     ui->textBrowser->clear();
@@ -180,11 +225,20 @@ void MainWindow::on_pushButton_c_clicked()
     ui->textEdit->clear();
     ui->textEdit->setAlignment(Qt::AlignRight);
 }
+
+/**
+ * @brief MainWindow::on_pushButton_ans_clicked prints last answer into textedit
+ */
 void MainWindow::on_pushButton_ans_clicked()
 {
     QString tmp = QString::fromStdString(ans);
     ui->textEdit->insertPlainText(tmp);
 }
+
+/**
+ * @brief MainWindow::on_pushButton_neg_clicked negates whole string in textedit by
+ * putting it into brackets and multiplying by -1
+ */
 void MainWindow::on_pushButton_neg_clicked()
 {
     QString tmp = ui->textEdit->toPlainText();
@@ -196,12 +250,19 @@ void MainWindow::on_pushButton_neg_clicked()
     ui->textEdit->setAlignment(Qt::AlignRight);
     flag = 1;
 }
+
+/**
+ * @brief MainWindow::on_pushButton_dec_clicked prints decimal point into textedit
+ */
 void MainWindow::on_pushButton_dec_clicked()
 {
     ui->textEdit->insertPlainText(",");
 }
 
-//operations and parentheses
+/**
+ * @brief MainWindow::operations_clicked prints operators "+","-","*","/" into textedit
+ * @param button pointer to button from group operations
+ */
 void MainWindow::operations_clicked(QAbstractButton *button)
 {
     if(button->text() != "X")
@@ -209,36 +270,70 @@ void MainWindow::operations_clicked(QAbstractButton *button)
     else
     ui->textEdit->insertPlainText("*");
 }
+
+/**
+ * @brief MainWindow::operations_pressed changing color of operations group button when pressed
+ * @param button pointer to button from group operations
+ */
 void MainWindow::operations_pressed(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(120,85,80) } QPushButton{ color: white }");
 }
+
+/**
+ * @brief MainWindow::operations_released changing color of operations group button when released
+ * @param button pointer to button from group operations
+ */
 void MainWindow::operations_released(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(107,75,71) } QPushButton{ color: white }");
 }
 
-//operations with x
+/**
+ * @brief MainWindow::operations_x_pressed changing color of operations_x group button when pressed
+ * @param button pointer to button from group operations_x
+ */
 void MainWindow::operations_x_pressed(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(120,85,80) } QPushButton{ color: white }");
 }
+
+/**
+ * @brief MainWindow::operations_x_released changing color of operations_x group button when released
+ * @param button pointer to button from group operations_x
+ */
 void MainWindow::operations_x_released(QAbstractButton *button)
 {
     button->setStyleSheet("QPushButton{ background-color: rgb(107,75,71) } QPushButton{ color: white }");
 }
+
+/**
+ * @brief MainWindow::on_pushButton_sq_clicked inserts "^2" into textedit
+ */
 void MainWindow::on_pushButton_sq_clicked()
 {
     ui->textEdit->insertPlainText("^2");
 }
+
+/**
+ * @brief MainWindow::on_pushButton_sqn_clicked inserts "^()" into textedit
+ */
 void MainWindow::on_pushButton_sqn_clicked()
 {
     ui->textEdit->insertPlainText("^()");
 }
+
+/**
+ * @brief MainWindow::on_pushButton_r_clicked inserts "√" into textedit
+ */
 void MainWindow::on_pushButton_r_clicked()
 {
     ui->textEdit->insertPlainText("√");
 }
+
+/**
+ * @brief MainWindow::on_pushButton_fac_clicked inserts "!" into textedit
+ */
 void MainWindow::on_pushButton_fac_clicked()
 {
     ui->textEdit->insertPlainText("!");
