@@ -138,19 +138,19 @@ TEST(nthRootTest_WithoutSecondParameter, decimal) {
 
 // Tests for nthRoot function with second parameter
 
-TEST(nthRootTest_WithoutSecondParameter, positive) {
+TEST(nthRootTest_WithSecondParameter, positive) {
     EXPECT_EQ(math.nthRoot(27,3),3);
     EXPECT_EQ(math.nthRoot(1000,3),10);
     EXPECT_EQ(math.nthRoot(8,3),2);
     EXPECT_EQ(math.nthRoot(0,4),0);
 }
 
-TEST(nthRootTest_WithoutSecondParameter, negative) {
+TEST(nthRootTest_WithSecondParameter, negative) {
     EXPECT_ANY_THROW(math.nthRoot(-2,3));
     EXPECT_ANY_THROW(math.nthRoot(1,-2));
 }
 
-TEST(nthRootTest_WithoutSecondParameter, decimal) {
+TEST(nthRootTest_WithSecondParameter, decimal) {
     EXPECT_EQ(math.nthRoot(1.8,3),1.216440399);
     EXPECT_EQ(math.nthRoot(5.1),1.311983468);
 }
