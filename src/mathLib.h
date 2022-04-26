@@ -16,11 +16,11 @@ class MathFtion
         bool brackeysTest(std::string text);
         bool brackeysSubTest(std::string text);
         bool signsTest(std::string text);
-        bool nthRootTest(std::string text);
 
         //Support functions
+        std::string signRepair(string text);
         std::string cleaner(std::string text);
-        int findChar(std::string test, char lookFor, int option = 1);
+        int findChar(std::string test, char lookFor, int option = 1, int position = 0);
         int backFindChar(std::string text, char lookFor, int lastPos);
         int numberFinder(std::string text, int signPosition, int option = 0);
         char sign(std::string text);
