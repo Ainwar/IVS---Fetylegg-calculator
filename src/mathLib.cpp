@@ -19,10 +19,9 @@
 #define CHARFAIL 63 //Value for return from function that inform about missing signs 
 
 /**
- * @brief 
- * TODO
- * @param text 
- * @return string 
+ * @brief send equation to other functions
+ * @param text equation
+ * @return string answer
  */
 
 string MathFtion::inputFtion(string text){
@@ -35,27 +34,26 @@ string MathFtion::inputFtion(string text){
 }
 
 /**
- * @brief 
- * TODO
- * @param text 
- * @return string 
+ * @brief sort brackeys, eliminate them by sending content of brackeys into solver
+ * @param text equation
+ * @return string without brackyes with solver function
  */
 
 string MathFtion::sorter(string text){
     int firBrack,secBrack; 
     text = cleaner(text)
-    while(brackeysTest(test)){
+    while(!brackeysTest(test)){
             firBrack = backFindChar(text, RIGHTBRACKEY, text.lenght())
             secBrack = backFindChar(text, LEFTBRACKEY, firBrack);
-            text.replace(firBrack, lastBrack,(sorter(text.substr(firBrack, (firBrack - secBrack))));
+            text.replace(secBrack, firBrack,(solver(text.substr(secBrack+ONESTEP, (firBrack - secBrack - ONESTEP)))));
     }
     return solver(text);
 }
 
 /**
- * @brief 
- * @param text 
- * @return string 
+ * @brief parse numbers, look for signs, solve problem
+ * @param text equation
+ * @return string answer
  */
 
 string MathFtion::solver(string text){
@@ -123,11 +121,10 @@ double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSig
 }
 
 /**
- * @brief 
- * TODO
+ * @brief test if logic in equation is allright
  * @param text 
- * @return true 
- * @return false 
+ * @return true if one of the test isn't allright
+ * @return false if everything is allright
  */
 
 bool MathFtion::validTest(string text){
@@ -339,6 +336,59 @@ char MathFtion::sign(string text){
 }
 
 /**
+ * @brief reduce sign plus and minus in equation
+ * @param text equation
+ * @return repaired string
+ */
+
+string MathFtion::signRepair(string text){
+    char lastChar = text[0];
+    int counter = 0;
+    cout << text << " first one" << endl;
+    for(int i = 0; i < text.length(); i++){
+        cout << text << endl;
+        if(lastChar == text[i]){
+            counter++;
+            if(counter == 2){
+                switch(lastChar){
+                    case '-':
+                        text.erase(i,ONESTEP);
+                        text[i-ONESTEP] = '+';
+                        i -= ONESTEP;
+                        lastChar = text[i];
+                        counter = ONESTEP;
+                        break;
+
+                    case '+':
+                        text.erase(i,ONESTEP);
+                        i -= ONESTEP; 
+                        lastChar = text[i];
+                        counter = ONESTEP;
+                        break;
+
+                    default:
+                        continue;
+                        break;
+                }
+            }
+        }
+        else{
+            if(lastChar == '+' && text[i] == '-'){
+                text.erase(i-ONESTEP, ONESTEP);
+                i--;
+            }
+            if(lastChar == '-' && text[i] == '+'){
+                text.erase(ONESTEP, ONESTEP);
+                i--;
+            }
+            counter = 1;
+            lastChar = text[i];
+        }
+    }
+    return text;
+}
+
+/**
  * @brief sum of a and b
  * @param a
  * @param b
@@ -395,7 +445,6 @@ double MathFtion::power(double a, int b){
  * @param a
  * @param b 
  * @return 
- * TODO look for c++ nthRoot function 
 */
 double MathFtion::nthRoot(double a, int b){
     double result;

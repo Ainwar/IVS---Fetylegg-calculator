@@ -8,8 +8,8 @@ class MathFtion
 
         //solving algorithm function
         std::string sorter(std::string text);
-        std::string solver(std::string text); //TODO fill solver and sorter function
-        double mathCaller(std::string text); //DONE
+        std::string solver(std::string text); 
+        double mathCaller(std::string text);
 
         //test functions
         std::string validTest(std::string text);
@@ -17,15 +17,13 @@ class MathFtion
         bool brackeysSubTest(std::string text);
         bool signsTest(std::string text);
         bool nthRootTest(std::string text);
-        //TODO signs test function
-        //TODO nthRootTest function
 
         //Support functions
-        std::string cleaner(std::string text); //DONE
-        int findChar(std::string test, char lookFor, int option = 1); //DONE
-        int backFindChar(std::string text, char lookFor, int lastPos); //DONE
-        int numberFinder(std::string text, int signPosition, int option = 0); //DONE
-        char sign(std::string text); //DONE
+        std::string cleaner(std::string text);
+        int findChar(std::string test, char lookFor, int option = 1);
+        int backFindChar(std::string text, char lookFor, int lastPos);
+        int numberFinder(std::string text, int signPosition, int option = 0);
+        char sign(std::string text);
 
         //functions
         double plusF(double a, double b); //TESTED
@@ -36,5 +34,4 @@ class MathFtion
         double factorial(double a); //TESTED
         double negation(double a); //TESTED
 };        
-
 #endif
