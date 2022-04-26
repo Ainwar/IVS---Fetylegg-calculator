@@ -60,7 +60,7 @@ string MathFtion::sorter(string text){
         else{
             tempRight = ' ';
         }
-        tempCount = solverBaby(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)));
+        tempCount = solver(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)));
         text = cleaner(tempLeft+tempCount+tempRight);
         brackeys--;
     }   
@@ -241,7 +241,7 @@ bool MathFtion::brackeysTest(string text){
  */
 
 bool MathFtion::brackeysSubTest(string text){
-    int right = backFindChar(text, RIGHTBRACKEY, text.lenght());
+    int right = backFindChar(text, RIGHTBRACKEY, text.length());
     if(right == MINUSONE){
         return true;
     }
@@ -296,7 +296,7 @@ string MathFtion::cleaner(string text){
 
 int MathFtion::findChar(string text, char lookFor, int option, int position){
     int counter = 0;
-    for(int i = position; i < text.lenght(); i++){
+    for(int i = position; i < text.length(); i++){
         if(text[i] == lookFor){
             if(option = 1){
                 return i;
@@ -306,7 +306,7 @@ int MathFtion::findChar(string text, char lookFor, int option, int position){
             }
         }
     }
-    if(choice == 2){
+    if(option == 2){
         return counter;
     }
     else{
@@ -483,7 +483,7 @@ double MathFtion::nthRoot(double a, int b){
     }
     
     // calculation of nth root
-    result = pow(a, 1/b)
+    result = pow(a, 1/b);
     return result;
         
 }
