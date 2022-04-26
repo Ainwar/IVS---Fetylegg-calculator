@@ -18,7 +18,7 @@ class MathFtion
         bool signsTest(std::string text);
 
         //Support functions
-        std::string signRepair(string text);
+        std::string signRepair(std::string text);
         std::string cleaner(std::string text);
         int findChar(std::string test, char lookFor, int option = 1, int position = 0);
         int backFindChar(std::string text, char lookFor, int lastPos);

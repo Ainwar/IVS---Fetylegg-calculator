@@ -167,7 +167,7 @@ double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSig
             return factorial(numberOne);
             break;
         case '√': 
-            return nthRoot(numberTwo, (int)numberOne)
+            return nthRoot(numberTwo, (int)numberOne);
             break;
         case '^':
             return power(numberOne, (int)numberTwo);
@@ -219,7 +219,7 @@ bool MathFtion::validTest(string text){
 bool MathFtion::brackeysTest(string text){
     int left = findChar(text, LEFTBRACKEY, OPTIONTWO);
     int right = findChar(text, RIGHTBRACKEY, OPTIONTWO);
-    if((left != NEGATIVEONE) || (right != NEGATIVEONE)){
+    if((left != MINUSONE) || (right != MINUSONE)){
         if((left == right) && brackeysSubTest(text)){
             
             return false;
@@ -324,7 +324,7 @@ int MathFtion::findChar(string text, char lookFor, int option, int position){
 
 int MathFtion::backFindChar(string text, char lookFor, int lastPos){
     for(int i = lastPos; i >= 0; i--){
-        if(test[i] == lookFor){
+        if(text[i] == lookFor){
             return i;
         }
     }
@@ -400,7 +400,7 @@ char MathFtion::sign(string text, int*position){
             }
         }
     }
-    return CHARFAIL
+    return CHARFAIL;
 }
 
 /**
@@ -484,7 +484,7 @@ double MathFtion::nthRoot(double a, int b){
     
     // calculation of nth root
     result = pow(a, 1/b)
-    return result
+    return result;
         
 }
 
