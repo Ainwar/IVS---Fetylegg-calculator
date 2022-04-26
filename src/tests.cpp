@@ -3,7 +3,7 @@
                                 sudo apt-get install cmake
                                 cd /usr/src/gtest
                                 sudo cmake CMakeLists.txt
-                                make
+                                sudo make
     Do priecinku, kde mate zdrojaky vlozte CMakeLists.txt a tests.cpp
     Do terminalu napiste: cmake CMakeLists.txt && make
     Testy sa spustaju prikazom ./runTests
