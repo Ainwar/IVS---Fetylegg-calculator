@@ -1,5 +1,6 @@
 #ifndef _MATHLIB_H_
 #define _MATHLIB_H_
+#include<string>
 
 class MathFtion
 {

@@ -3,7 +3,12 @@
 #include <QShortcut>
 #include <QButtonGroup>
 #include <QEventLoop>
+#include "mathLib.h"
 
+/**
+ * @brief MainWindow::MainWindow constructor
+ * @param parent
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -45,6 +50,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_sq, &QPushButton::clicked, this, &MainWindow::on_pushButton_sq_clicked);
     connect(ui->pushButton_dec, &QPushButton::clicked, this, &MainWindow::on_pushButton_dec_clicked);*/
 }
+
+/**
+ * @brief MainWindow::~MainWindow destructor
+ */
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -102,9 +111,10 @@ void MainWindow::on_pushButton_eq_clicked()
     ui->textEdit->clear();
     ui->textEdit->setAlignment(Qt::AlignRight);
     //send tmp to expression_decode function, return result and print it in textedit
-    ans = expr.toStdString();
-
-    expr = QString::fromStdString(ans);
+    MathFtion math;
+    std::string answer = math.inputFtion(tmp);
+    expr = QString::fromStdString(answer);
+    ans = answer;
     ui->textEdit->insertPlainText(expr);//ans instead result
     QEventLoop loop;
     connect(ui->numbers, &QButtonGroup::buttonClicked, &loop, &QEventLoop::quit);
