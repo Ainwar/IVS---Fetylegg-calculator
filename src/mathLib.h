@@ -10,7 +10,9 @@ class MathFtion
         //solving algorithm function
         std::string sorter(std::string text);
         std::string solver(std::string text); 
+        double parseFtion(string text);
         double mathCaller(double numberOne, double numberTwo, char solvingSign);
+   
 
         //test functions
         bool validTest(std::string text);

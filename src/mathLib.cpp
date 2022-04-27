@@ -107,7 +107,15 @@ string MathFtion::solver(string text){
         else{
                 tempLeft = ' ';
         }
-        numberOne = stod(text.substr(numberOnePosition, (signPosition-numberOnePosition)));
+        if((numberOne = parseFtion(text.substr(numberOnePosition, (signPosition-numberOnePosition)))) == MINUSONE){
+            if(solvingSign == ROOTSUBSTITUTE){
+                negFir = 0;
+                numberOne = MINUSONE;
+            }
+            else{
+                return (FAIL+text);
+            }
+        }
         if(negFir){
             numberOne = negation(numberOne);
         }
@@ -121,7 +129,9 @@ string MathFtion::solver(string text){
                 text.erase(signPosition+ONESTEP,ONESTEP);
             }
             numberTwoPosition = numberFinder(text, signPosition);
-            numberTwo = stod(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition)));
+            if((numberTwo = parseFtion(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition)))) == MINUSONE){
+                return (FAIL+text);
+            }
             if(negSec){
                 numberTwo = negation(numberTwo);
             }
@@ -165,7 +175,6 @@ string MathFtion::signRepair(string text){
     char lastChar = text[0];
     int counter = 0;
     for(int i = 0; i < text.length(); i++){
-        cout << text << endl;
         if(lastChar == text[i]){
             counter++;
             if(counter == 2){
@@ -208,6 +217,24 @@ string MathFtion::signRepair(string text){
 }
 
 /**
+ * @brief parse number and solve exceptions
+ * @param text number to parse
+ * @return parsed number
+ */
+
+double MathFtion::parseFtion(string text){
+    double parsedNumber = 0;
+    try{
+        parsedNumber = stod(text);
+    }
+    catch(invalid_argument){
+        cerr << "Tried parse: " << text << endl;
+        return MINUSONE;
+    }
+    return parsedNumber;
+}
+
+/**
  * @brief choose function which is gonna be called
  * @param numberOne first number 
  * @param numberTwo second number
@@ -220,7 +247,10 @@ double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSig
         case '!':
             return factorial(numberOne);
             break;
-        case ROOTSUBSTITUTE: 
+        case ROOTSUBSTITUTE:
+            if(numberOne == MINUSONE){
+                return nthRoot(numberTwo);
+            }
             return nthRoot(numberTwo, (int)numberOne);
             break;
         case '^':
@@ -340,12 +370,13 @@ string MathFtion::cleaner(string text){
 }
 
 
-/**
- * @brief si
- * @param
- * @return
+/** 
+ * @brief switch string value of radical character and change it for substitution easer to read for algorithm
+ * @param text equation
+ * @return "repaired" equation
 */
-string roootSwitch(string text){
+
+string rootSwitch(string text){
     char newSign = ROOTSUBSTITUTE;
     int position = 0;
     string rootSign = ROOTSIGN;
@@ -464,6 +495,9 @@ char MathFtion::sign(string text, int*position){
     }
     
     for(int i = 0; i < signsConst.length(); i++){
+        if(signsConst[i] == ROOTSUBSTITUTE){
+            numPos = 0;
+        }
         for(int k = numPos; k < text.length(); k++){
             if(text[k] == signsConst[i]){
                 *position = k;
@@ -554,7 +588,7 @@ double MathFtion::nthRoot(double a, int b){
     }
     
     // calculation of nth root
-    result = std::pow(a, 1.0/b);
+    result = pow(a, 1.0/b);
     return result;
         
 }
