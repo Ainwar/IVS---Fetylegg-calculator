@@ -13,10 +13,12 @@
 #define OPTIONONE 1 //for functions which needs option choice
 #define OPTIONTWO 2 //for functions which needs option choice
 #define NUMBERS "0123456789." //Numbers for parsing
-#define SIGNS "!√^*/-+" //Signs for searching cycle
+#define SIGNS "!?^*/-+" //Signs for searching cycle
 #define ONESTEP 1 //adding value to cycles or functions 
 #define TESTMODE "test mode" //Password for testing mode
-#define CHARFAIL 63 //Value for return from function that inform about missing signs 
+#define CHARFAIL 35 //Value for return from function that inform about missing signs 
+#define ROOTSUBSTITUTE 63 //substitute for root
+#define ROOTSIGN "√" //actual root sign in string
 
 using namespace std;
 
@@ -218,7 +220,7 @@ double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSig
         case '!':
             return factorial(numberOne);
             break;
-        case '√': 
+        case ROOTSUBSTITUTE: 
             return nthRoot(numberTwo, (int)numberOne);
             break;
         case '^':
@@ -317,8 +319,8 @@ bool MathFtion::signsTest(string text){
 
     for(int i = 0; i < text.length(); i++){
 
-        if (text[i] == ('^') || text[i] == ('√') || text[i] == ('*') || text[i] == ('/') ){
-            if (text[i+1] == ('^') || text[i+1] == ('√') || text[i+1] == ('*') || text[i+1] == ('/') ) {
+        if (text[i] == ('^') || text[i] == (ROOTSUBSTITUTE) || text[i] == ('*') || text[i] == ('/') ){
+            if (text[i+1] == ('^') || text[i+1] == (ROOTSUBSTITUTE) || text[i+1] == ('*') || text[i+1] == ('/') ) {
                 return true;
             }
         }
@@ -334,6 +336,23 @@ bool MathFtion::signsTest(string text){
 
 string MathFtion::cleaner(string text){
     text.erase(remove(text.begin(), text.end(), SPACE), text.end());
+    return text;
+}
+
+
+/**
+ * @brief si
+ * @param
+ * @return
+*/
+string roootSwitch(string text){
+    char newSign = ROOTSUBSTITUTE;
+    int position = 0;
+    string rootSign = ROOTSIGN;
+    while((position = text.find(rootSign)) != MINUSONE){
+        text.erase(position+1, (rootSign.length()-MINUSONE));
+        text[position] = newSign;
+    }
     return text;
 }
 
