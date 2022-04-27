@@ -554,7 +554,7 @@ double MathFtion::nthRoot(double a, int b){
     }
     
     // calculation of nth root
-    result = pow(a, 1/b);
+    result = std::pow(a, 1.0/b);
     return result;
         
 }
