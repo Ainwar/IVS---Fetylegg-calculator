@@ -184,7 +184,7 @@ string MathFtion::zeroErase(string text){
     bool decimalDeleted = false;
     if(text.find(".")){
         while(text[text.length()-ONESTEP] == ZERONUM || text[text.length()-ONESTEP] == DECIMALPOINT){
-            if(text[te.length()-ONESTEP] == DECIMALPOINT){
+            if(text[text.length()-ONESTEP] == DECIMALPOINT){
                 decimalDeleted = true;
             }
             text.erase((text.length()-ONESTEP), ONESTEP);
@@ -528,17 +528,18 @@ char MathFtion::sign(string text, int*position){
     string signsConst = SIGNS;
     string numberConst = NUMBERS;
     int actualPos, numPos = text.length();
-    for(int j = 0; j < numberConst.length(); j++){
-        actualPos = text.find(numberConst[j]);
-        if(actualPos >= 0 && numPos > actualPos ){
-            numPos = actualPos; 
+    if(text.find(ROOTSUBSTITUTE) != MINUSONE){
+        numPos = 0;
+    }
+    else{
+        for(int j = 0; j < numberConst.length(); j++){
+            actualPos = text.find(numberConst[j]);
+            if(actualPos >= 0 && numPos > actualPos ){
+                numPos = actualPos; 
+            }
         }
     }
-    
     for(int i = 0; i < signsConst.length(); i++){
-        if(signsConst[i] == ROOTSUBSTITUTE){
-            numPos = 0;
-        }
         for(int k = numPos; k < text.length(); k++){
             if(text[k] == signsConst[i]){
                 *position = k;
