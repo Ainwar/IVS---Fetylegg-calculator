@@ -178,7 +178,7 @@ string MathFtion::solver(string text){
  *@return asnwer
 */
 string MathFtion::zeroErase(string text){
-    while(text[text.length()-ONESTEP} == ZERONUM || text[text.length()-ONESTEP} == DECIMALPOINT){
+    while(text[text.length()-ONESTEP] == ZERONUM || text[text.length()-ONESTEP] == DECIMALPOINT){
         text.erase((text.length()-ONESTEP), ONESTEP); 
     }
     return text;
