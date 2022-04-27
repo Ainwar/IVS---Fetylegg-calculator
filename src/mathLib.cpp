@@ -19,6 +19,8 @@
 #define CHARFAIL 35 //Value for return from function that inform about missing signs 
 #define ROOTSUBSTITUTE 63 //substitute for root
 #define ROOTSIGN "√" //actual root sign in string
+#define DECIMALPOINT '.' //for purpose of erasing character
+#define ZERONUM '0' //for purpose of erasing character
 
 using namespace std;
 
@@ -34,6 +36,7 @@ string MathFtion::inputFtion(string text){
         return text;
     }
     text = sorter(text);
+    text = zeroErase(text);
     return text;
 }
 
@@ -161,6 +164,18 @@ string MathFtion::solver(string text){
         text = signRepair(text);
         negFir = 0;
         negSec = 0;
+    }
+    return text;
+}
+
+/**
+ *@brief erase excess zeros and decimal point
+ *@param text asnwer
+ *@return asnwer
+*/
+string MathFtion::zeroErase(string text){
+    while(text[text.length()-ONESTEP} == ZERONUM || text[text.length()-ONESTEP} == DECIMALPOINT){
+        text.erase((text.length()-ONESTEP), ONESTEP); 
     }
     return text;
 }
@@ -381,7 +396,7 @@ string rootSwitch(string text){
     int position = 0;
     string rootSign = ROOTSIGN;
     while((position = text.find(rootSign)) != MINUSONE){
-        text.erase(position+1, (rootSign.length()-MINUSONE));
+        text.erase(position+1, (rootSign.length()-ONESTEP));
         text[position] = newSign;
     }
     return text;

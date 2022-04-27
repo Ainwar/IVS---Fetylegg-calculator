@@ -21,6 +21,7 @@ class MathFtion
         bool signsTest(std::string text);
 
         //Support functions
+        std::string zeroErase(std::string text);
         std::string signRepair(std::string text);
         std::string cleaner(std::string text);
         std::string rootSwitch(std::string text);
