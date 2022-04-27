@@ -107,7 +107,7 @@ string MathFtion::solver(string text){
         else{
                 tempLeft = ' ';
         }
-        if((numberOne = parseFtion(text.substr(numberOnePosition, (signPosition-numberOnePosition)))) == MINUSONE){
+        if((numberOne = parseFtion(text.substr(numberOnePosition, (signPosition-numberOnePosition))) == MINUSONE){
             if(solvingSign == ROOTSUBSTITUTE){
                 negFir = 0;
                 numberOne = MINUSONE;
@@ -129,7 +129,7 @@ string MathFtion::solver(string text){
                 text.erase(signPosition+ONESTEP,ONESTEP);
             }
             numberTwoPosition = numberFinder(text, signPosition);
-            if((numberTwo = parseFtion(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition)))) == MINUSONE){
+            if((numberTwo = parseFtion(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition))) == MINUSONE){
                 return (FAIL+text);
             }
             if(negSec){
@@ -400,7 +400,7 @@ int MathFtion::findChar(string text, char lookFor, int option, int position){
     int counter = 0;
     for(int i = position; i < text.length(); i++){
         if(text[i] == lookFor){
-            if(option = 1){
+            if(option == 1){
                 return i;
             }
             else{
