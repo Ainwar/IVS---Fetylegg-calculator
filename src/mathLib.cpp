@@ -69,7 +69,10 @@ string MathFtion::sorter(string text){
         else{
             tempRight = ' ';
         }
-        tempCount = solver(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)));
+        tempCount = solver(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)))
+        if(text.find(FAIL)){
+            return text;
+        }
         text = cleaner(tempLeft+tempCount+tempRight);
         brackeys--;
     }   
@@ -178,8 +181,17 @@ string MathFtion::solver(string text){
  *@return asnwer
 */
 string MathFtion::zeroErase(string text){
-    while(text[text.length()-ONESTEP] == ZERONUM || text[text.length()-ONESTEP] == DECIMALPOINT){
-        text.erase((text.length()-ONESTEP), ONESTEP); 
+    bool decimalDeleted = false;
+    if(text.find(".")){
+        while(text[text.length()-ONESTEP] == ZERONUM || text[text.length()-ONESTEP] == DECIMALPOINT){
+            if(text[te.length()-ONESTEP] == DECIMALPOINT){
+                decimalDeleted = true;
+            }
+            text.erase((text.length()-ONESTEP), ONESTEP);
+            if(decimalDeleted){
+                break;
+            }
+        }
     }
     return text;
 }
