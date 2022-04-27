@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -c -Wall
 LDLIBS = -lm
 EXECUTABLE = mathLib.o
 OBJECT = mathLib.cpp
