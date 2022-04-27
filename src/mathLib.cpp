@@ -2,6 +2,7 @@
 #include<string>
 #include<math.h>
 #include "mathLib.h"
+#include <iomanip>
 #include<algorithm>
 
 #define MINUSONE -1 //Negation number/empty return value
@@ -21,6 +22,9 @@
 #define ROOTSIGN "√" //actual root sign in string
 #define DECIMALPOINT '.' //for purpose of erasing character
 #define ZERONUM '0' //for purpose of erasing character
+#define PRECISION 10 //Precision of decimal part
+
+
 
 using namespace std;
 
@@ -138,7 +142,7 @@ string MathFtion::solver(string text){
             if(negSec){
                 numberTwo = negation(numberTwo);
             }
-            tempCount = to_string(mathCaller(numberOne, numberTwo, solvingSign));
+            tempCount = reverseParse(mathCaller(numberOne, numberTwo, solvingSign));
             
             if(numberTwoPosition != text.length()){
                 tempRight = text.substr(numberTwoPosition+1,(text.length()-numberTwoPosition));
@@ -156,7 +160,7 @@ string MathFtion::solver(string text){
             else{
                 tempRight = ' ';
             }
-            tempCount = to_string(mathCaller(numberOne,0,solvingSign));
+            tempCount = reverseParse(mathCaller(numberOne,0,solvingSign));
             text = tempLeft+tempCount+tempRight;
 
         }
@@ -228,6 +232,16 @@ string MathFtion::signRepair(string text){
             lastChar = text[i];
         }
     }
+    return text;
+}
+
+string MathFtion::reverseParse(double answer){
+    string text;
+    stringstream parser;
+
+    parser << setprecision(PRECISION) << answer;
+    parser >> text;
+
     return text;
 }
 
@@ -391,7 +405,7 @@ string MathFtion::cleaner(string text){
  * @return "repaired" equation
 */
 
-string rootSwitch(string text){
+string MathFtion::rootSwitch(string text){
     char newSign = ROOTSUBSTITUTE;
     int position = 0;
     string rootSign = ROOTSIGN;
@@ -594,7 +608,7 @@ double MathFtion::nthRoot(double a, int b){
     
     //*condition for calculating root
     if (a < 0){
-        fprintf(stderr, "Cannot calculate root of negative number!");
+        cerr << "Cannot calculate root of negative number!" << endl;
         return 0;
     }
 

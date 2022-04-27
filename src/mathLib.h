@@ -10,7 +10,6 @@ class MathFtion
         //solving algorithm function
         std::string sorter(std::string text);
         std::string solver(std::string text); 
-        double parseFtion(std::string text);
         double mathCaller(double numberOne, double numberTwo, char solvingSign);
    
 
@@ -25,6 +24,8 @@ class MathFtion
         std::string signRepair(std::string text);
         std::string cleaner(std::string text);
         std::string rootSwitch(std::string text);
+        std::string reverseParse(double answer);
+        double parseFtion(std::string text);
         int findChar(std::string test, char lookFor, int option = 1, int position = 0);
         int backFindChar(std::string text, char lookFor, int lastPos);
         int numberFinder(std::string text, int signPosition, int option = 0);
