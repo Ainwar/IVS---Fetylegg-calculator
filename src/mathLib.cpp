@@ -4,6 +4,7 @@
 #include "mathLib.h"
 #include <iomanip>
 #include<algorithm>
+#include <sstream>
 
 #define MINUSONE -1 //Negation number/empty return value
 #define FAIL "You inserted wrong equation: " //
