@@ -166,11 +166,6 @@ string MathFtion::solver(string text){
                         return FAIL;
                     }
                     break;
-                case '!':
-                    if(negFir == 1){
-                        return FAIL;
-                    }
-                    break;
                 default:
                     break;
             }
@@ -199,7 +194,7 @@ string MathFtion::solver(string text){
                 tempRight = ' ';
             }
             //fail if is factorial smaller than one
-            if(numberOne > 1){
+            if(numberOne > 1 || decimalCheck(numberOne)){
                 return FAIL;
             }
             tempCount = reverseParse(mathCaller(numberOne,0,solvingSign));
