@@ -444,7 +444,7 @@ bool MathFtion::signsTest(string text){
  * @return false if the number is without decimal end
  */
 
-bool decimalCheck(double number){
+bool MathFtion::decimalCheck(double number){
     int decimalDelete = (int)number;
     double withoutDecimal = (double)decimalDelete;
 
