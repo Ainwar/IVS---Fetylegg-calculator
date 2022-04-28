@@ -59,7 +59,7 @@ string MathFtion::sorter(string text){
     int firBrack, secBrack, brackeys;
     string tempLeft, tempRight, tempCount;
     brackeys = findChar(text, LEFTBRACKEY, 2);
-    while(brackeys){
+    while(brackeys ){
         firBrack = backFindChar(text, LEFTBRACKEY, text.length());
         secBrack = findChar(text, RIGHTBRACKEY,1,firBrack);
         if(firBrack != 0){
@@ -75,8 +75,8 @@ string MathFtion::sorter(string text){
             tempRight = ' ';
         }
         tempCount = solver(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)))
-        if(text.find(FAIL)){
-            return text;
+        if(tempCount.find(FAIL) != MINUSONE){
+            return FAIL;
         }
         text = cleaner(tempLeft+tempCount+tempRight);
         brackeys--;
@@ -261,6 +261,12 @@ string MathFtion::signRepair(string text){
     return text;
 }
 
+/**
+ * @brief convert double number to string
+ * @param answer double
+ * @return string answer
+ */
+
 string MathFtion::reverseParse(double answer){
     string text;
     stringstream parser;
@@ -283,6 +289,7 @@ double MathFtion::parseFtion(string text){
         parsedNumber = stod(text);
     }
     catch(invalid_argument){
+        cerr << "invalid_argument" << endl;
         cerr << "Tried parse: " << text << endl;
         return MINUSONE;
     }
