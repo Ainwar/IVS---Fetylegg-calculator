@@ -256,7 +256,7 @@ void MainWindow::on_pushButton_neg_clicked()
  */
 void MainWindow::on_pushButton_dec_clicked()
 {
-    ui->textEdit->insertPlainText(",");
+    ui->textEdit->insertPlainText(".");
 }
 
 /**

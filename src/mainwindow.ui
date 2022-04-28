@@ -1087,9 +1087,9 @@ border:1px solid black;</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="operations_x"/>
   <buttongroup name="operations"/>
-  <buttongroup name="numbers"/>
+  <buttongroup name="operations_x"/>
   <buttongroup name="light_grey_buttons"/>
+  <buttongroup name="numbers"/>
  </buttongroups>
 </ui>
