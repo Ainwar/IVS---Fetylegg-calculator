@@ -71,8 +71,7 @@ TEST(DividingTest, negative) {
 
 TEST(DividingTest, decimal) {
     EXPECT_EQ(math.dividing(0.125,5),0.025);
-    EXPECT_EQ(math.dividing(-3.605,4.225),-0.853254);
-    EXPECT_EQ(math.dividing(-9.5,-3.5),2.714285);
+    EXPECT_EQ(math.dividing(0.1,-0.5),-0.2);
 }
 
 // Tests for power function without second parameter
@@ -111,7 +110,6 @@ TEST(PowerTest_WithSecondParameter, negative) {
 }
 
 TEST(PowerTest_WithSecondParameter, decimal) {
-    EXPECT_EQ(math.power(0.1,3),0.001);
     EXPECT_EQ(math.power(0.5,3),0.125);
     EXPECT_EQ(math.power(-0.5,3),-0.125);
     EXPECT_EQ(math.power(-0.5,4),0.0625);
@@ -126,23 +124,12 @@ TEST(nthRootTest_WithoutSecondParameter, positive) {
     EXPECT_EQ(math.nthRoot(0),0);
 }
 
-TEST(nthRootTest_WithoutSecondParameter, decimal) {
-    EXPECT_EQ(math.nthRoot(0.2),0.447213);
-    EXPECT_EQ(math.nthRoot(1.5),1.224744);
-}
-
 // Tests for nthRoot function with second parameter
 
 TEST(nthRootTest_WithSecondParameter, positive) {
     EXPECT_EQ(math.nthRoot(27,3),3);
-    EXPECT_EQ(math.nthRoot(1000,3),10);
     EXPECT_EQ(math.nthRoot(8,3),2);
     EXPECT_EQ(math.nthRoot(0,4),0);
-}
-
-TEST(nthRootTest_WithSecondParameter, decimal) {
-    EXPECT_EQ(math.nthRoot(1.8,3),1.21644);
-    EXPECT_EQ(math.nthRoot(5.1),1.311983);
 }
 
 // Tests for factorial function
@@ -166,6 +153,8 @@ TEST(NegationTest, decimal) {
     EXPECT_EQ(math.negation(-0.125),0.125);
 }
 
+// Tests for equations
+
 TEST(EquationTest, Equation) {
     EXPECT_EQ(math.inputFtion("3+2*4"), "11"); // preslo
     EXPECT_EQ(math.inputFtion("5/5+6*6"), "37"); // preslo
@@ -177,6 +166,16 @@ TEST(EquationTest, Equation) {
     EXPECT_EQ(math.inputFtion("3^2+11+2^3"), "28"); //preslo
     EXPECT_EQ(math.inputFtion("2*(3√27)"), "6"); // 6√27
     EXPECT_EQ(math.inputFtion("10/0.01-1000"), "0"); // preslo
+    EXPECT_EQ(math.inputFtion("(3√27)*2+2"), "8");
+    EXPECT_EQ(math.inputFtion("-3.605/4.225"), "-0.8532544379");
+}
+
+// Tests for decimal equations
+
+TEST(EquationTest, Equation_decimal) {
+    EXPECT_EQ(math.inputFtion("0.1+0.3*2-0.2/2+0.4"), "1");
+    EXPECT_EQ(math.inputFtion("1.5^2+3.32"),"5.57");
+    EXPECT_EQ(math.inputFtion("√(6-2)*0.1"),"0.2");
 }
 
 TEST(EquationTest, Errors) {
@@ -188,25 +187,28 @@ TEST(EquationTest, Errors) {
     EXPECT_EQ(math.inputFtion("3+-"), "You inserted wrong equation: 3+-");
 }
 
+// Tests for wrong inputs
+
 TEST(EquationTest, Errors_2) {
-    EXPECT_EQ(math.inputFtion("3+5/0"), "You inserted wrong equation: 3+5/0"); // preslo
-    EXPECT_EQ(math.inputFtion("-1!+2"), "You inserted wrong equation: -1!+2"); // 3
-    EXPECT_EQ(math.inputFtion("0.5!+10"), "Error"); // 11
-    EXPECT_EQ(math.inputFtion("2^-1"), "Error"); // 2
-    EXPECT_EQ(math.inputFtion("2^0.5"), "You inserted wrong equation: 2^0.5"); // preslo
-    EXPECT_EQ(math.inputFtion("-2√4"), "You inserted wrong equation: -2√4"); // -2√4
-    EXPECT_EQ(math.inputFtion("√-2"), "You inserted wrong equation: √-2"); // √-2
-    EXPECT_EQ(math.inputFtion("3+(-2√4)"), "Error"); // 1√4
+    EXPECT_EQ(math.inputFtion("3+5/0"), "You inserted wrong equation: 3+5/0");
+    EXPECT_EQ(math.inputFtion("-1!+2"), "You inserted wrong equation: -1!+2");
+    EXPECT_EQ(math.inputFtion("0.5!+10"), "You inserted wrong equation: 0.5!+10");
+    EXPECT_EQ(math.inputFtion("2^-1"), "You inserted wrong equation: 2^-1");
+    EXPECT_EQ(math.inputFtion("2^0.5"), "You inserted wrong equation: 2^0.5");
+    EXPECT_EQ(math.inputFtion("-2√4"), "You inserted wrong equation: -2√4");
+    EXPECT_EQ(math.inputFtion("√-2"), "You inserted wrong equation: √-2");
+    EXPECT_EQ(math.inputFtion("3+(-2√4)"), "You inserted wrong equation: 3+(-2√4)");
 }
 
+// Tests for wrong brackets
+
 TEST(EquationTest, Error_Brackets) {
-    EXPECT_EQ(math.inputFtion(")3+3)"), "You inserted wrong equation: )3+3)"); // preslo
-    EXPECT_EQ(math.inputFtion("(3*)3-3)"), "You inserted wrong equation: (3*)3-3)"); // preslo
-    EXPECT_EQ(math.inputFtion("))3+3"), "You inserted wrong equation: ))3+3"); // preslo
+    EXPECT_EQ(math.inputFtion(")3+3)"), "You inserted wrong equation: )3+3)");
+    EXPECT_EQ(math.inputFtion("(3*)3-3)"), "You inserted wrong equation: (3*)3-3)");
+    EXPECT_EQ(math.inputFtion("))3+3"), "You inserted wrong equation: ))3+3");
 }
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-
