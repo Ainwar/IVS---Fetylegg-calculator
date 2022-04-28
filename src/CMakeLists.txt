@@ -1,14 +1,13 @@
-cmake_minimum_required(VERSION 2.8.11)
+project(Fetylogg-calculator)
+cmake_minimum_required(VERSION 3.20.0)
 
 SET(CMAKE_CXX_STANDARD 11)
 SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(files mathLib.h mathLib.cpp)
 
-# Locate GTest
 find_package(GTest REQUIRED)
 
-# Link runTests with what we want to test and the GTest library
 add_executable(runTests tests.cpp ${files})
 
 target_link_libraries(runTests GTest::Main)
