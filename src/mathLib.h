@@ -18,6 +18,7 @@ class MathFtion
         bool brackeysTest(std::string text);
         bool brackeysSubTest(std::string text);
         bool signsTest(std::string text);
+        bool decimalCheck(double number);
 
         //Support functions
         std::string zeroErase(std::string text);

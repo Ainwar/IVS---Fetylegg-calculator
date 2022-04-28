@@ -105,15 +105,10 @@ string MathFtion::solver(string text){
     while((solvingSign = sign(text, &signPosition)) != CHARFAIL){
         numberOnePosition = numberFinder(text, signPosition, OPTIONONE);
         if(numberOnePosition != 0 && text[numberOnePosition-ONESTEP] == '-'){
-            if(solvingSign == '!'){
-                return FAIL;
-            }
-            else{
-                text.erase(numberOnePosition-ONESTEP,ONESTEP);
-                numberOnePosition--;
-                signPosition--;
-                negFir = 1;
-            }
+            text.erase(numberOnePosition-ONESTEP,ONESTEP);
+            numberOnePosition--;
+            signPosition--;
+            negFir = 1;
         }
         if(numberOnePosition == ONESTEP && text[0] == '+'){
             text.erase(0, ONESTEP);
@@ -139,29 +134,53 @@ string MathFtion::solver(string text){
         if(negFir){
             numberOne = negation(numberOne);
         }
-
+        //Ordinary solve
         if(solvingSign != '!'){
+            //preparation for negation of second number
             if(text[signPosition+ONESTEP] == '-'){
-                if(solvingSign == ROOTSUBSTITUTE){
-                    return FAIL;
-                }
-                else{
-                    text.erase(signPosition+ONESTEP, ONESTEP);
-                    negSec = 1;
-                }
+                text.erase(signPosition+ONESTEP, ONESTEP);
+                negSec = 1;
             }
+            //erasing excess plus sign
             if(text[signPosition+ONESTEP] == '+'){
                 text.erase(signPosition+ONESTEP,ONESTEP);
             }
             numberTwoPosition = numberFinder(text, signPosition);
+            //parse
             if((numberTwo = parseFtion(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition)))) == MINUSONE){
                 return FAIL;
             }
+            switch(solvingSign){
+                case '/': 
+                    if(numberTwo == 0){
+                        return FAIL;
+                    }
+                    break;
+                case ROOTSUBSTITUTE:
+                    if(negFir == 1 || negSec == 1){
+                        return FAIL;
+                    }
+                    break;
+                case '^':
+                    if(decimalCheck(numberTwo)){
+                        return FAIL;
+                    }
+                    break;
+                case '!':
+                    if(negFir == 1){
+                        return FAIL;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            //negation
             if(negSec){
                 numberTwo = negation(numberTwo);
             }
+            //send to get answer
             tempCount = reverseParse(mathCaller(numberOne, numberTwo, solvingSign));
-            
+            //creating right part of string
             if(numberTwoPosition != text.length()){
                 tempRight = text.substr(numberTwoPosition+1,(text.length()-numberTwoPosition));
             }
@@ -172,11 +191,16 @@ string MathFtion::solver(string text){
             
         }
         else{
+            //Factorial Part
             if((signPosition+ONESTEP) < text.length()){
                 tempRight = text.substr((signPosition+ONESTEP), text.length());
             }
             else{
                 tempRight = ' ';
+            }
+            //fail if is factorial smaller than one
+            if(numberOne > 1){
+                return FAIL;
             }
             tempCount = reverseParse(mathCaller(numberOne,0,solvingSign));
             text = cleaner(tempLeft+tempCount+tempRight);
@@ -419,6 +443,25 @@ bool MathFtion::signsTest(string text){
 }
 
 /**
+ * @brief checking if number has a decimal end
+ * @param number tested number 
+ * @return true if the number has a decimal end
+ * @return false if the number is without decimal end
+ */
+
+bool decimalCheck(double number){
+    int decimalDelete = (int)number;
+    double withoutDecimal = (double)decimalDelete;
+
+    if(withoutDecimal == number){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+/**
  * @brief remove white all whitespaces from string
  * @param text which user of function want to clear from whitespaces
  * @return string text cleaned from whitespaces
@@ -639,11 +682,6 @@ double MathFtion::nthRoot(double a, int b){
     double result;
     
     //*condition for calculating root
-    if (a < 0){
-        cerr << "Cannot calculate root of negative number!" << endl;
-        return 0;
-    }
-
     if (a == 0 || a == 1){
         return a;
     }
