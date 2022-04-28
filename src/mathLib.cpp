@@ -99,6 +99,7 @@ string MathFtion::solver(string text){
     char solvingSign = '+';
     double numberOne, numberTwo;
     int signPosition, numberOnePosition, numberTwoPosition;
+    text = rootSwitch(text);
     text = signRepair(text);
     if(signsTest(text) || text.find(FAIL) != MINUSONE){
         return FAIL;
@@ -163,7 +164,7 @@ string MathFtion::solver(string text){
                     }
                     break;
                 case '^':
-                    if(decimalCheck(numberTwo)){
+                    if(decimalCheck(numberTwo) || negSec == 1){
                         return FAIL;
                     }
                     break;
@@ -195,7 +196,7 @@ string MathFtion::solver(string text){
                 tempRight = ' ';
             }
             //fail if is factorial smaller than one
-            if(numberOne > 1 || decimalCheck(numberOne)){
+            if(numberOne < 1 || decimalCheck(numberOne)){
                 return FAIL;
             }
             tempCount = reverseParse(mathCaller(numberOne,0,solvingSign));
