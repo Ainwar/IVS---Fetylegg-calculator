@@ -1,20 +1,19 @@
 CC = g++
-CFLAGS = -c -Wall
+CFLAGS = -c -Werror
 LDLIBS = -lm
 EXECUTABLE = mathLib.o
 OBJECT = mathLib.cpp
-DIRECTORY = ../ivs_makefile # toto sa zmeni potom ked sa to bude odovzdavat
+DIRECTORY =  IVS---Fetylegg-calculator
 ZIP = xbartl07_xsulga02_xtabim01_xpazde16.zip
 FOLDERS = CMakeFiles html latex
-SINGLE_FILE = cmake_install.cmake CMakeCache.txt Makefile runTests Doxyfile.doxygen
+SINGLE_FILE = cmake_install.cmake CMakeCache.txt Makefile runTests
 
-# prelozenie GUI
 # prelozenie profilingu
 # run - spustenie programu
 # profile - spustenie profilingu
 
 $(EXECUTABLE): $(OBJECT)
-	$(CC) $(CFLAGS) $(OBJECT) $(LDLIBS)
+	$(CC) $(CFLAGS) $(OBJECT) $(LDLIBS) -o $(EXECUTABLE)
 
 all: $(EXECUTABLE)
 
@@ -25,7 +24,7 @@ test: tests.cpp
 	cmake CMakeLists.txt && make -f Makefile && ./runTests
 
 doc: 
-	doxygen Doxyfile.doxygen
+	doxygen documentation.doxygen
 
 clean:
 	rm -f $(EXECUTABLE)
