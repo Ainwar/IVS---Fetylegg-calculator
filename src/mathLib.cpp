@@ -196,7 +196,7 @@ string MathFtion::solver(string text){
 */
 string MathFtion::zeroErase(string text){
     bool decimalDeleted = false;
-    if(text.find(DECIMALPOINT)) != MINUSONE){
+    if(text.find(DECIMALPOINT) != MINUSONE){
         while(text[text.length()-ONESTEP] == ZERONUM || text[text.length()-ONESTEP] == DECIMALPOINT){
             if(text[text.length()-ONESTEP] == DECIMALPOINT){
                 decimalDeleted = true;
