@@ -1,7 +1,6 @@
 Prostredi
 ---------
 
-Ubuntu 64bit
 Windows 64bit
 
 Autori
@@ -16,4 +15,4 @@ Fetylegg
 Licence
 -------
 
-Tento program je poskytovan pod licencí GNU
+Tento program je poskytovan pod licencí GNU General Public License v3.0
