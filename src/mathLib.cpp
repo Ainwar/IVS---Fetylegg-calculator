@@ -41,7 +41,7 @@ string MathFtion::inputFtion(string text){
         
         return FAIL+text;
     }
-    text = sorter(text)
+    text = sorter(text);
     if(text.find(FAIL) != MINUSONE){
         return FAIL+tempText;
     }
@@ -74,7 +74,7 @@ string MathFtion::sorter(string text){
         else{
             tempRight = ' ';
         }
-        tempCount = solver(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)))
+        tempCount = solver(text.substr(firBrack+ONESTEP, (secBrack - firBrack - ONESTEP)));
         if(tempCount.find(FAIL) != MINUSONE){
             return FAIL;
         }
