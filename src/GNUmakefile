@@ -5,7 +5,7 @@ EXECUTABLE = mathLib.o
 OBJECT = mathLib.cpp
 DIRECTORY =  IVS---Fetylegg-calculator
 ZIP = xbartl07_xsulga02_xtabim01_xpazde16.zip
-FOLDERS = CMakeFiles html latex
+FOLDERS = CMakeFiles
 SINGLE_FILE = cmake_install.cmake CMakeCache.txt Makefile runTests
 
 # prelozenie profilingu
@@ -30,5 +30,3 @@ clean:
 	rm -f $(EXECUTABLE)
 	rm -f $(SINGLE_FILE)
 	rm -rf $(FOLDERS)
-	rm -rf $(ZIP)
-	
