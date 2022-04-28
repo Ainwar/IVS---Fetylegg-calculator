@@ -310,8 +310,6 @@ double MathFtion::parseFtion(string text){
         parsedNumber = stod(text);
     }
     catch(invalid_argument){
-        cerr << "invalid_argument" << endl;
-        cerr << "Tried parse: " << text << endl;
         return MINUSONE;
     }
     return parsedNumber;
@@ -661,7 +659,7 @@ double MathFtion::power(double a, int b){
         return a;
     }
     else{
-        int c = a;
+        double c = a;
         for(int i = 1; i < b; i++)
             a = a*c;
     
@@ -695,7 +693,7 @@ double MathFtion::nthRoot(double a, int b){
  * @return factorial of a
  */
 double MathFtion::factorial(double a){
-    float result = 1;
+    double result = 1;
     for (int i = a; i > 0; i--){
         result =  result * i;
     }
