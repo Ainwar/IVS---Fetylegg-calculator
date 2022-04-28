@@ -1,15 +1,3 @@
-/*  --Navod na spustenie testov vo WSL--
-    Do terminalu treba napisat: sudo apt-get install libgtest-dev
-                                sudo apt-get install cmake
-                                cd /usr/src/gtest
-                                sudo cmake CMakeLists.txt
-                                sudo make
-    Do priecinku, kde mate zdrojaky vlozte CMakeLists.txt a tests.cpp
-    Do terminalu napiste: cmake CMakeLists.txt && make
-    Testy sa spustaju prikazom ./runTests
-    Keby nieco neslo tagnite ma na discorde xD
-*/
-
 #include <iostream>
 #include <string>
 #include "gtest/gtest.h"
