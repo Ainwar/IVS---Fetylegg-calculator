@@ -35,11 +35,16 @@ using namespace std;
  */
 
 string MathFtion::inputFtion(string text){
+    string tempText = text;
     text = cleaner(text);
     if(validTest(text)){
-        return text;
+        
+        return FAIL+text;
     }
-    text = sorter(text);
+    text = sorter(text)
+    if(text.find(FAIL) != MINUSONE){
+        return FAIL+tempText;
+    }
     text = zeroErase(text);
     return text;
 }
@@ -94,16 +99,21 @@ string MathFtion::solver(string text){
     double numberOne, numberTwo;
     int signPosition, numberOnePosition, numberTwoPosition;
     text = signRepair(text);
-    if(signsTest(text)){
+    if(signsTest(text) || text.find(FAIL) != MINUSONE){
         return FAIL;
     }
     while((solvingSign = sign(text, &signPosition)) != CHARFAIL){
         numberOnePosition = numberFinder(text, signPosition, OPTIONONE);
-        if(numberOnePosition != 0 && text[numberOnePosition-ONESTEP] == '-' && solvingSign != '!'){
-            text.erase(numberOnePosition-ONESTEP,ONESTEP);
-            numberOnePosition--;
-            signPosition--;
-            negFir = 1;
+        if(numberOnePosition != 0 && text[numberOnePosition-ONESTEP] == '-'){
+            if(solvingSign == '!'){
+                return FAIL;
+            }
+            else{
+                text.erase(numberOnePosition-ONESTEP,ONESTEP);
+                numberOnePosition--;
+                signPosition--;
+                negFir = 1;
+            }
         }
         if(numberOnePosition == ONESTEP && text[0] == '+'){
             text.erase(0, ONESTEP);
@@ -119,11 +129,11 @@ string MathFtion::solver(string text){
         }
         if((numberOne = parseFtion(text.substr(numberOnePosition, (signPosition-numberOnePosition)))) == MINUSONE){
             if(solvingSign == ROOTSUBSTITUTE){
-                negFir = 0;
                 numberOne = MINUSONE;
+                negFir = 0;
             }
             else{
-                return (FAIL+text);
+                return FAIL;
             }
         }
         if(negFir){
@@ -132,15 +142,20 @@ string MathFtion::solver(string text){
 
         if(solvingSign != '!'){
             if(text[signPosition+ONESTEP] == '-'){
-                text.erase(signPosition+ONESTEP, ONESTEP);
-                negSec = 1;
+                if(solvingSign == ROOTSUBSTITUTE){
+                    return FAIL;
+                }
+                else{
+                    text.erase(signPosition+ONESTEP, ONESTEP);
+                    negSec = 1;
+                }
             }
             if(text[signPosition+ONESTEP] == '+'){
                 text.erase(signPosition+ONESTEP,ONESTEP);
             }
             numberTwoPosition = numberFinder(text, signPosition);
             if((numberTwo = parseFtion(text.substr((signPosition+ONESTEP), (numberTwoPosition-signPosition)))) == MINUSONE){
-                return (FAIL+text);
+                return FAIL;
             }
             if(negSec){
                 numberTwo = negation(numberTwo);
@@ -153,7 +168,7 @@ string MathFtion::solver(string text){
             else{
                 tempRight = ' ';
             }
-            text = tempLeft+tempCount+tempRight;
+            text = cleaner(tempLeft+tempCount+tempRight);
             
         }
         else{
@@ -164,10 +179,9 @@ string MathFtion::solver(string text){
                 tempRight = ' ';
             }
             tempCount = reverseParse(mathCaller(numberOne,0,solvingSign));
-            text = tempLeft+tempCount+tempRight;
+            text = cleaner(tempLeft+tempCount+tempRight);
 
         }
-        text = cleaner(text);
         text = signRepair(text);
         negFir = 0;
         negSec = 0;
@@ -324,11 +338,9 @@ double MathFtion::mathCaller(double numberOne, double numberTwo, char solvingSig
 
 bool MathFtion::validTest(string text){
     if(brackeysTest(text)){
-        cout << FAIL << "Brackeys unmatch" << endl;
         return true;
     }
     if(signsTest(text)){
-        cout << FAIL << "Signs unmatch" << endl;
         return true;
     }
     return false;
