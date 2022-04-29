@@ -1,0 +1,17 @@
+Implementace návrh - návrh systému - průběžné změny dle zjištěných nedostatků oproti původnímu návrhu
+Implementace Mat Funkcí - prodloužena implementace z důvodů výskytu komplikací při vývoji, složitost algoritmu
+Implementace GUI - Dle plánus
+Implementace Makefile - Opožděno oproti plánu, z důvodu opoždění vývoje testů
+Implementace Profilingu - Nedokončeno, opoždění při vývoji
+Implementace Nápovědy - Zabralo oproti plánu méně času, nezkušenost při odhadu ohledně náročnosti implementace nápovědy
+Implementace Rozsšířený návrh GUI pro příští verzi - Dle plánu
+Testování Tvorba testů - opoždění, komplikace při vývoji, průvěžné doladění testů dle návrhu mat knihovny
+Testování profiling - Neproběhlo, částečně mimo mat knihovnu
+Testování mat funkcí - opoždění oproti plánu, výskyt chyb, oprava, následné prodloužení testování úměrně opravě chyb
+Testování GUI - Dle plánu
+Testování Instalačního balíčku - nedotažené do konce, méně času na konci vývoje na testování instalace
+Testování Celého systému - částečné z důvodu nedostatku času na konci vývoje
+Příprava instalačního balíčku - Náročnější oproti původnímu očekávání - vlezlo se do časového odhadu, každopádně bylo odsunu blíže konci vývoje
+Dokumentace uživatelská - dle plánu
+Dokumentace Návod k instalaci - odložen úměrně přípravě instalačního balíčku - čas k dispozici dostačující
+Dokuemntace Programátorská - Opožděna úměrně vývoji knihoven 
