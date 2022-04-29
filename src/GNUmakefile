@@ -14,7 +14,7 @@ $(EXECUTABLE): $(OBJECT)
 all: $(EXECUTABLE)
 
 pack:
-	cd ../../.. && zip -r $(ZIP) $(DIRECTORY)
+	cd ../../../.. && zip -r $(ZIP) $(DIRECTORY)
 
 test: tests.cpp
 	cmake CMakeLists.txt && make -f Makefile && ./runTests
