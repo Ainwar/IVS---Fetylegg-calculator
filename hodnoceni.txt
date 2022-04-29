@@ -1,4 +1,0 @@
-xbartl07 95 (pokročilé mat. operace, převedení profilingu na operace Fetylegg mat. knihovny)
-xsukga02 110 (kompletní GNU, instalátor, navržení profilingu)
-xtabim01 100 (testy, makefile, testování mat.knihovny)
-xpazde16 95 (zakladní mat. operace, dokumentace)
